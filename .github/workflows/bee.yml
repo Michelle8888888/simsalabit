@@ -11,21 +11,28 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Download the original bee
-        run: curl -fsSL -o /tmp/bee-original.glb "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261017_132918_e8364d8f-7df2-4788-a725-dec28ec19af8.glb" && ls -la /tmp/bee-original.glb
-      - name: Report what is inside
+        run: curl -fsSL -o /tmp/bee-original.glb "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261017_132918_e8364d8f-7df2-4788-a725-dec28ec19af8.glb"
+      - name: Lighter variant (half the triangles, textures at most 768 px)
         run: |
-          mkdir -p bee-report
-          npx -y @gltf-transform/cli@4 inspect /tmp/bee-original.glb > bee-report/original.txt 2>&1 || true
-      - name: Compress (geometry with meshopt, textures as WebP at most 1024 px)
+          npx -y @gltf-transform/cli@4 optimize /tmp/bee-original.glb assets/bee-lite.glb --compress meshopt --texture-compress webp --texture-size 768 --simplify true --simplify-ratio 0.5 --simplify-error 0.0005
+          npx -y @gltf-transform/cli@4 inspect assets/bee-lite.glb > bee-report/lite.txt 2>&1 || true
+          ls -la assets/*.glb
+      - name: Copy three.js 0.160.0 onto the site (no outside server needed)
         run: |
-          mkdir -p assets
-          npx -y @gltf-transform/cli@4 optimize /tmp/bee-original.glb assets/bee.glb --compress meshopt --texture-compress webp --texture-size 1024 --simplify false
-          npx -y @gltf-transform/cli@4 inspect assets/bee.glb > bee-report/small.txt 2>&1 || true
-          ls -la assets/bee.glb
+          cd /tmp && npm i --silent three@0.160.0 && cd -
+          T=/tmp/node_modules/three; V=assets/vendor/three
+          mkdir -p $V/build $V/examples/jsm/loaders $V/examples/jsm/libs $V/examples/jsm/environments $V/examples/jsm/utils
+          cp $T/build/three.module.min.js $V/build/
+          cp $T/examples/jsm/loaders/GLTFLoader.js $T/examples/jsm/loaders/DRACOLoader.js $V/examples/jsm/loaders/
+          cp $T/examples/jsm/libs/meshopt_decoder.module.js $V/examples/jsm/libs/
+          cp $T/examples/jsm/environments/RoomEnvironment.js $V/examples/jsm/environments/
+          cp $T/examples/jsm/utils/BufferGeometryUtils.js $V/examples/jsm/utils/
+          cp $T/LICENSE $V/
+          grep -h "^import" $V/examples/jsm/*/*.js | sort -u
       - name: Save it in the repository
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
-          git add assets/bee.glb bee-report
-          git commit -m "Small bee model (compressed copy of the template bee)"
+          git add assets bee-report
+          git commit -m "Lighter bee variant and three.js 0.160.0 copied onto the site"
           git push
