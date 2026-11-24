@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Simsalabit | Websites mit einem Hauch Magie</title>
-<meta name="description" content="Websites mit einem Hauch Magie für kleine Unternehmen in und um Zürich. Gestaltet, getextet und online in ein bis vier Wochen.">
+<meta name="description" content="Websites mit einem Hauch Magie für kleine Unternehmen. Gestaltet, getextet und online in ein bis vier Wochen.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2315141A'/%3E%3Cpath transform='translate(12 12)' fill='%239D8BF9' d='M20 0c1.2 11.5 8.5 18.8 20 20-11.5 1.2-18.8 8.5-20 20-1.2-11.5-8.5-18.8-20-20C11.5 18.8 18.8 11.5 20 0z'/%3E%3C/svg%3E">
 <link rel="preload" href="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261017_132918_e8364d8f-7df2-4788-a725-dec28ec19af8.glb" as="fetch" crossorigin="anonymous">
 <!-- the import map must come before any module preload, or Chrome ignores it and the bee never starts -->
@@ -90,6 +90,7 @@ main { overflow-x: clip; }
 .bee-spot { position: absolute; left: 50%; top: 47vh; width: 2px; height: 2px; pointer-events: none; }
 .loaded .hero__side { animation: fade 1s .7s ease forwards; }
 .hero__side p { font-size: clamp(15px,1.45vw,20px); line-height: 1.32; color: var(--muted); font-weight: 400; }
+.hero__side .motto { font-family: "Instrument Serif", Georgia, serif; font-style: italic; font-size: clamp(32px,3.8vw,64px); line-height: 1.08; letter-spacing: -.01em; color: var(--violet); text-wrap: balance; text-shadow: 0 0 22px rgba(255,255,255,.9); }
 @keyframes fade { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
 .join { display: inline-flex; align-items: center; gap: 14px; margin-top: 40px; font-weight: 600; font-size: clamp(15px,1.4vw,19px); }
 .join i { flex: none; width: 25px; height: 32px; border: 1.8px solid currentColor; border-radius: 10px; display: grid; place-items: center; transition: transform .35s ease, background .35s; }
@@ -258,8 +259,7 @@ main { overflow-x: clip; }
 
 /* COMPUTERS AND TABLETS: everything centred, text spread across the middle of the screen (phones keep their own layout below) */
 @media (min-width: 761px) {
-  .hero__side { width: min(1500px, 90vw); }
-  .hero__side p { font-size: clamp(16px, 1.3vw, 24px); line-height: 1.45; text-shadow: 0 0 18px rgba(255,255,255,.85); }
+  .hero__side { width: min(1100px, 90vw); }
   .s1 .text, .s2 .text, .sr .text, .s3 .text { margin-left: auto; margin-right: auto; width: min(1080px, 84vw); text-align: center; }
   .s1 .title, .s2 .title, .sr .title, .s3 .title { max-width: 860px; margin-left: auto; margin-right: auto; text-wrap: balance; }
   .s1 .title br, .s2 .title br, .sr .title br, .s3 .title br { display: none; }
@@ -356,7 +356,7 @@ main { overflow-x: clip; }
     <h1 data-speed="0.55"><span class="line"><span data-k="h1a">Auch ein kleines Geschäft</span></span><span class="line"><span data-k="h1b">verdient eine grosse Show</span></span></h1>
     <div class="flower flower--cosmos" data-speed="-0.25" data-rot="8" data-side="L"><div class="fl-in"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261017_132919_c994332b-7f9d-43b5-933d-1e94faa91dd4.png" crossorigin="anonymous" onerror="this.onerror=null;this.removeAttribute('crossorigin');this.src=this.src" alt=""><i class="bp"></i></div></div>
     <div class="hero__side">
-      <p data-k="hs">Websites mit einem Hauch Magie für kleine Unternehmen in und um Zürich. Gestaltet, getextet und online in ein bis vier Wochen.</p>
+      <p class="motto" data-k="hs">Ich mache Websites, die in Erinnerung bleiben.</p>
     </div>
     <i class="bee-spot" aria-hidden="true"></i>
   </section>
@@ -366,17 +366,15 @@ main { overflow-x: clip; }
     <div class="text">
       <div class="num reveal" aria-hidden="true">01</div>
       <h2 class="title reveal d1" data-k="s1t">Alles, was Ihr <br>Geschäft online <br>braucht</h2>
-      <p class="copy reveal d2" data-k="s1c">Design, Texte und Einrichtung aus einer Hand. Ihre Website wird zu Ihrem Schaufenster und Ihrem Empfang zugleich: Kundinnen und Kunden finden Sie, vertrauen Ihnen und buchen bei Ihnen.</p>
       <ul class="svc reveal d3">
         <li><svg class="star"><use href="#st"/></svg><span data-k="sv1">Eine Website mit Bewegungseffekten, von einer bis acht Seiten</span></li>
         <li><svg class="star"><use href="#st"/></svg><span data-k="sv2">Online-Buchung oder ein WhatsApp-Buchungsknopf</span></li>
         <li><svg class="star"><use href="#st"/></svg><span data-k="sv3">Texte für Sie geschrieben, auf Deutsch, Englisch und Französisch</span></li>
         <li><svg class="star"><use href="#st"/></svg><span data-k="sv4">Google-Unternehmensprofil und Search Console eingerichtet</span></li>
         <li><svg class="star"><use href="#st"/></svg><span data-k="sv5">Logo, Visitenkarten oder eine ganze Markenidentität</span></li>
-        <li><svg class="star"><use href="#st"/></svg><span data-k="sv6">Ein Instagram-Plan und ein 15-Sekunden-Markenvideo</span></li>
+        <li><svg class="star"><use href="#st"/></svg><span data-k="sv6">Ein Instagram-Plan mit 30 Post-Designs</span></li>
       </ul>
       <i class="perch" aria-hidden="true"></i>
-      <p class="for reveal d4" data-k="s1f">Gemacht für Coiffeursalons, Beauty- und Nagelstudios, Massagepraxen, Floristinnen, Reinigungsfirmen, Malerbetriebe und Umzugsfirmen.</p>
     </div>
   </section>
 
@@ -385,7 +383,6 @@ main { overflow-x: clip; }
     <div class="text">
       <div class="num reveal" aria-hidden="true">02</div>
       <h2 class="title reveal d1" data-k="s2t">Vorne Magie, <br>dahinter bewährte <br>Werkzeuge</h2>
-      <p class="copy reveal d2" data-k="s2c">Ihre Besucher sehen die Show. Dahinter laufen Buchung, Zahlungen und Google mit Werkzeugen, die längst funktionieren. So geht nichts kaputt, während Sie mit Ihren Kundinnen und Kunden beschäftigt sind.</p>
       <ul class="vals">
         <li class="reveal d2"><svg class="star"><use href="#st"/></svg><div><b data-k="w1">Ein fester Preis</b><span data-k="w1t">Sie kennen Preis und Umfang, bevor wir starten, inklusive zwei Korrekturrunden.</span></div></li>
         <li class="reveal d3"><svg class="star"><use href="#st"/></svg><div><b data-k="w2">Online in Wochen</b><span data-k="w2t">Ihre Website ist in ein bis vier Wochen online, nicht erst in Monaten.</span></div></li>
@@ -401,16 +398,13 @@ main { overflow-x: clip; }
       <div class="num reveal" aria-hidden="true">03</div>
       <h2 class="title reveal d1" data-k="at">Hallo, ich bin<br>Michaela</h2>
       <p class="lead reveal d2" data-k="al">KI ist mein Zauberstab. Mein Handwerk ist, zu wissen, welcher Zauber passt.</p>
-      <p class="copy reveal d2" data-k="ac">Ich baue seit 2021 Websites und studiere AI and Business Leadership an der HSLU in Luzern. Ich verwandle Ihre Vision in eine Website, die sich wie Magie anfühlt, während Sie weiter tun, was Sie lieben.</p>
       <p class="copy reveal d2" data-k="av">Drei Werte leiten jede Website, die ich baue:</p>
       <ul class="vals">
         <li class="reveal d2"><svg class="star"><use href="#st"/></svg><div><b data-k="v1">Freiheit</b><span data-k="v1t">Ihre Website soll Ihnen Zeit zurückgeben. Online-Buchung und klare Informationen bedeuten weniger Anrufe und mehr Zeit für Ihr Handwerk.</span></div></li>
         <li class="reveal d3"><svg class="star"><use href="#st"/></svg><div><b data-k="v2">Integrität</b><span data-k="v2t">Klare Preise, ehrliche Versprechen und nur echte Bewertungen. Was wir vereinbaren, bekommen Sie.</span></div></li>
         <li class="reveal d3"><svg class="star"><use href="#st"/></svg><div><b data-k="v3">Originalität</b><span data-k="v3t">Ihr Geschäft hat seine eigene Magie. Ihre Website soll sie zeigen, statt auszusehen wie alle anderen.</span></div></li>
       </ul>
-      <p class="copy reveal d4" data-k="ak">Und immer mit Freundlichkeit und Authentizität: Sie sprechen direkt mit mir, vom ersten Gespräch bis zur Lancierung.</p>
       <p class="trick reveal d4" data-k="atr">Magie sieht einfach aus. Das ist der ganze Trick.</p>
-      <p class="sig reveal d4">Michaela</p>
     </div>
     <div class="sa-vis reveal d2">
       <div class="portrait"><img src="assets/michaela.webp" alt="Michaela, Gründerin von Simsalabit" data-kalt="palt"></div>
@@ -436,7 +430,7 @@ main { overflow-x: clip; }
           </blockquote>
           <blockquote class="quote">
             <p data-k="q2">Danke für die super Zusammenarbeit: hervorragende Kommunikation, ein professionelles Vorgehen und Begleitung während des ganzen Projekts, alles auf hohem Niveau. Immer pünktlich und bereit, auf alle Fragen einzugehen. Eine wahre Fundgrube an kreativen Ideen. Die Website hat meine Erwartungen übertroffen. Michaela hat sich nicht nur um die Website gekümmert, sondern auch um Domain, Hosting, E-Mail, das Design des Flyers, die Visitenkarten und das Google-Konto. Ich musste mich um nichts kümmern. Ich kann Michaela allen empfehlen, die ihre Online-Projekte in gute Hände geben möchten.</p>
-            <cite>Jozef</cite>
+            <cite>Jozef<span data-k="q2r">Dachdecker</span></cite>
           </blockquote>
           </div>
         </div>
@@ -508,8 +502,7 @@ main { overflow-x: clip; }
           <li><svg class="star"><use href="#st"/></svg><span data-k="c7">Google-Unternehmensprofil eingerichtet</span></li>
           <li><svg class="star"><use href="#st"/></svg><span data-k="c8">Texte für Sie geschrieben</span></li>
           <li><svg class="star"><use href="#st"/></svg><span data-k="c9">Ganze Markenidentität: Logo, Farben, Schriften, Styleguide und Visitenkarten</span></li>
-          <li><svg class="star"><use href="#st"/></svg><span data-k="c10">30-Tage-Instagram-Plan mit 9 Post-Designs</span></li>
-          <li><svg class="star"><use href="#st"/></svg><span data-k="c11">15-Sekunden-Markenvideo für Reels</span></li>
+          <li><svg class="star"><use href="#st"/></svg><span data-k="c10">30-Tage-Instagram-Plan mit 30 Post-Designs</span></li>
           <li><svg class="star"><use href="#st"/></svg><span data-k="c12">3 Monate Pflegeplan inklusive</span></li>
         </ul>
         <p class="time" data-k="c13">Fertig in 4 Wochen</p>
@@ -599,6 +592,10 @@ main { overflow-x: clip; }
 
 <script>
 {
+  // a fresh visit or a reload always starts at the top, in the hero, where the bee begins
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  if (!location.hash || location.hash === '#beecheck') scrollTo(0, 0);
+  addEventListener('pageshow', e => { if (e.persisted && !location.hash) scrollTo(0, 0); });
   const finish = () => { document.getElementById('loader').classList.add('done'); document.body.classList.add('loaded'); };
   window.simsaFinish = finish;
   setTimeout(finish, 2500);
@@ -648,31 +645,26 @@ main { overflow-x: clip; }
   // ---------- Languages: German is written in the page, English comes from this list ----------
   const EN = {
     title: 'Simsalabit | Websites with a bit of magic',
-    desc: 'Websites with a bit of magic for small businesses in and around Zurich. Designed, written and live in one to four weeks.',
+    desc: 'Websites with a bit of magic for small businesses. Designed, written and live in one to four weeks.',
     n1: 'Services', n2: 'About', n3: 'Reviews', n4: 'Prices', cta: 'Let’s talk',
     n1b: 'Services', n2b: 'About', n3b: 'Reviews', n4b: 'Prices',
     h1a: 'Even a small business', h1b: 'deserves a big show',
-    hs: 'Websites with a bit of magic for small businesses in and around Zurich. Designed, written and live in one to four weeks.',
+    hs: 'I make websites that people remember.',
     s1t: 'Everything your <br>business needs <br>online',
-    s1c: 'Design, texts and setup, done for you. Your website becomes your shop window and your front desk at the same time, so clients find you, trust you and book you.',
     sv1: 'A website with motion effects, from one page to eight', sv2: 'Online booking, or a WhatsApp booking button',
     sv3: 'Texts written for you, in German, English and French', sv4: 'Google Business Profile and Search Console set up',
-    sv5: 'Logo, business cards or a full brand identity', sv6: 'An Instagram plan and a 15-second brand video',
-    s1f: 'Made for hairdressers, beauty and nail studios, massage therapists, florists, cleaners, painters and movers.',
+    sv5: 'Logo, business cards or a full brand identity', sv6: 'An Instagram plan with 30 post designs',
     s2t: 'Magic in front, <br>proven tools <br>behind',
-    s2c: 'Your visitors see the show. Behind it, booking, payments and Google run on tools that already work, so nothing breaks while you’re busy with clients.',
     w1: 'A fixed price', w1t: 'You know the price and the scope before we start, with two rounds of changes included.',
     w2: 'Live in weeks', w2t: 'Your website is online in one to four weeks, not months.',
     w3: 'Proven tools', w3t: 'Online booking and Google, plus TWINT payments if you need them, built on trusted tools instead of experiments.',
     w4: 'Simple payment', w4t: '80% when you book, 20% when your website is handed over.',
     at: 'Hi, I’m<br>Michaela',
     al: 'AI is my wand. Knowing which spell to cast is my craft.',
-    ac: 'I’ve been building websites since 2021 and I’m studying AI and Business Leadership at HSLU in Lucerne. I turn your vision into a website that feels like magic, while you keep doing what you love.',
     av: 'Three values guide every website I make:',
     v1: 'Freedom', v1t: 'Your website should give you time back. Online booking and clear information mean fewer calls and more time for your craft.',
     v2: 'Integrity', v2t: 'Clear prices, honest promises and real reviews only. What we agree is what you get.',
     v3: 'Originality', v3t: 'Your business has its own magic. Your website should show it, not look like everyone else’s.',
-    ak: 'And always with kindness and authenticity: you talk to me directly, from the first call to launch day.',
     atr: 'Magic looks easy. That’s the whole trick.',
     palt: 'Michaela, founder of Simsalabit',
     rt: 'What my <br>clients say',
@@ -680,7 +672,7 @@ main { overflow-x: clip; }
     q1r: 'Massage',
     q2: 'Thank you for a great collaboration: excellent communication, a professional approach and guidance throughout the whole project, all at a very high level. Always on time and ready to answer every question. A real treasure chest of creative ideas. The website exceeded my expectations. Michaela took care of not just the website but also the domain, hosting, email, the flyer design, business cards and the Google account. I didn’t have to worry about anything. I can recommend Michaela to anyone who needs their online projects in good hands.',
     q3: 'Michaela has made two websites for me, and each one exceeded my expectations. All my friends and family asked me who made the websites for my online shops. The cooperation was very professional, friendly and full of creative ideas. I can highly recommend Michaela as the go-to person for any web design.',
-    q3r: 'Two online shops', qaria: 'Client reviews', qdot: 'Review',
+    q2r: 'Roofing contractor', q3r: 'Two online shops', qaria: 'Client reviews', qdot: 'Review',
     bfs: 'magic prices',
     pt: 'Pick your <br>spell',
     pbf: '<strong>Black Friday launch prices</strong> for projects booked by 30 November 2026. Regular prices apply from 1 December.',
@@ -692,7 +684,7 @@ main { overflow-x: clip; }
     b4: 'Up to 5 pages with motion effects', b5: 'In German and English', b6: 'Online booking system', b7: 'Google Business Profile set up', b8: 'Texts written for you', b9: 'Logo and business card design', b10: 'Ready in 2 to 3 weeks', b11: 'Choose Spell',
     c0: 'Your whole brand, start to finish', c1: '5,555', c2: '7,900', c3: 'Regular price from 1 December: <span style="white-space: nowrap">CHF 7,900</span>',
     c4: 'Up to 8 pages with motion effects', c5: 'In German, English and French', c6: 'Online booking system', c7: 'Google Business Profile set up', c8: 'Texts written for you',
-    c9: 'Full brand identity: logo, colours, fonts, style guide and business cards', c10: '30-day Instagram plan with 9 post designs', c11: '15-second brand video for Reels', c12: '3 months of care plan included', c13: 'Ready in 4 weeks', c14: 'Choose Grand illusion',
+    c9: 'Full brand identity: logo, colours, fonts, style guide and business cards', c10: '30-day Instagram plan with 30 post designs', c12: '3 months of care plan included', c13: 'Ready in 4 weeks', c14: 'Choose Grand illusion',
     n5: '<strong>Care plan</strong> from CHF 90 a month: hosting, updates and small changes.',
     n7: '<strong>Payment 80/20:</strong> you pay 80% when you book and 20% when the finished project is delivered.',
     n6: 'All prices are starting prices in CHF. Printing, and the fees of booking or payment tools, are paid directly to their providers.',
@@ -802,7 +794,8 @@ const BEE_GLB = 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH0
 const WING_TEX = 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261017_132814_3a56ac14-47d8-4e49-a163-94234dea5639.png';
 const DEG = Math.PI / 180;
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
-const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+// gentle start and stop for each flight (a sine curve, softer than a cubic)
+const ease = t => .5 - .5 * Math.cos(Math.PI * t);
 const lerpAngle = (a, b, t) => { const d = ((b - a + 540) % 360) - 180; return a + d * t; };
 
 // ---------- Where each flower's bloom is, so the bee lands on it ----------
@@ -815,8 +808,8 @@ const lerpAngle = (a, b, t) => { const d = ((b - a + 540) % 360) - 180; return a
 // then the price cards Spark (left), Spell (right), Grand illusion (left on phones), and the footer flower.
 const STOPS = [
   { sel: '#top .bee-spot', big: 1 },
-  { sel: '#top .flower', big: 1, win: [.02, .2] },
-  { sel: '#services .flower', win: [.38, .68] },
+  { sel: '#top .flower', big: 1 },
+  { sel: '#services .flower' },
   { sel: '#services .perch', hover: 1 },
   { sel: '#how .flower' },
   { sel: '#about .flower--passion' },
@@ -826,11 +819,11 @@ const STOPS = [
   { sel: '#plan-spark .perch', card: 0 },
   { sel: '#plan-spell .perch', card: 1 },
   { sel: '#plan-grand .perch', card: 2 },
-  { sel: '#contact .flower', trig: 'sec' }
+  { sel: '#contact .flower' }
 ].map(o => {
   const el = document.querySelector(o.sel); if (!el) return null;
   const fl = el.classList.contains('flower') ? el : null;
-  return { fl, sec: el.closest('section'), bp: fl ? fl.querySelector('.bp') : el, trig: o.trig || 'bloom', win: o.win, centre: el.classList.contains('bee-spot'), big: !!o.big, hover: !!o.hover, card: o.card, lift: o.card != null ? .1 : o.hover ? 0 : .03, img: fl && (fl.querySelector('img[data-bloom]') || fl.querySelector('img')), auto: !fl };
+  return { fl, sec: el.closest('section'), bp: fl ? fl.querySelector('.bp') : el, centre: el.classList.contains('bee-spot'), big: !!o.big, hover: !!o.hover, card: o.card, lift: o.card != null ? .1 : o.hover ? 0 : .03, img: fl && (fl.querySelector('img[data-bloom]') || fl.querySelector('img')), auto: !fl };
 }).filter(s => s && s.bp);
 function findBloom(img) {
   const W = 128, H = Math.max(8, Math.round(128 * img.naturalHeight / img.naturalWidth)), N = W * H;
@@ -893,7 +886,7 @@ const bloomPx = s => { const r = s.bp.getBoundingClientRect(); return { x: r.lef
 // when the bee moves on: by the spot itself, except for the price cards, which take turns as the cards scroll by
 // (on a computer the three cards stand side by side, so their corners are at the same height)
 const plansEl = document.getElementById('plans');
-const trigY = s => { const y = bloomPx(s).y; if (s.card == null || !plansEl) return y; const r = plansEl.getBoundingClientRect(); return Math.max(y, r.top + s.card * r.height * .3); };
+const trigY = s => { const y = bloomPx(s).y; if (s.card == null || !plansEl) return y; const r = plansEl.getBoundingClientRect(); return Math.max(y, r.top + s.card * r.height * .38); };
 
 // ---------- three.js scene ----------
 const canvas = document.getElementById('bee');
@@ -918,6 +911,7 @@ const rim = new THREE.DirectionalLight(0xc8b8ff, 2.2); rim.position.set(-5, 2, -
 const flight = new THREE.Group(), beeRoot = new THREE.Group();
 flight.add(beeRoot); scene.add(flight);
 const flaps = [];
+const vel = { x: 0, y: 0 };
 
 // Wing texture: veined wing on black, keyed to alpha and brightened
 const wingMats = [];
@@ -981,9 +975,7 @@ loader.load(BEE_GLB, gltf => {
 err => { say('could not load the 3D model (' + ((err && err.message) || 'blocked or offline') + ')'); done(false); });
 
 // ---------- Flight: land on each section's flower, fly from side to side in between ----------
-// The bee sits in the middle of a flower (and scrolls with it) until that flower is in the upper third
-// of the screen, then flies over and lands when the next flower reaches the middle of the screen.
-// If the next flower is still far away, it waits at the edge and leaves when the flower is about to come in.
+// Where the bee is when she sits on a spot
 function pose(s) {
   const W = innerWidth, H = innerHeight, mob = W < 760, p = bloomPx(s);
   const side = s.centre ? 'C' : p.x < W / 2 ? 'L' : 'R';
@@ -994,27 +986,34 @@ function pose(s) {
   const yaw = side === 'C' ? 120 : side === 'L' ? 35 : 145;
   return { x, y, s: sc, yaw, pitch: 6, roll: side === 'R' ? -4 : 4, hover: s.hover };
 }
-function progress() {
-  const H = innerHeight, A = H * .3, B = H * .6, L = H * .8;
-  for (let j = 1; j < STOPS.length; j++) {
-    const s = STOPS[j];
-    // in the hero it goes by how far you have scrolled: down onto the hero flower, sit there a moment, then over to the right
-    if (s.win) { const f = clamp((scrollY - H * s.win[0]) / (H * (s.win[1] - s.win[0])), 0, 1); if (f < 1) return { i: j - 1, f }; continue; }
-    const yj = trigY(STOPS[j - 1]), yk = trigY(s), D = yk - yj;
-    // leave when this spot is in the upper third, land when the next reaches the middle (closer spots: a shorter hop)
-    let a = A, b = B;
-    if (D < B - A + H * .22) { const h2 = Math.max(0, (D - H * .22) / 2); a = H * .45 - h2; b = H * .45 + h2; }
-    const u = a - yj, v = yk - b;
-    const f = u <= 0 ? 0 : clamp(1 - v / Math.min(u + v, L), 0, 1);
-    if (s.trig === 'sec') {
-      // the last flower sits low in the footer: land by the time the page ends
-      const r = s.sec.getBoundingClientRect(), end = Math.max(H * .02, H - r.height);
-      if (r.top <= end + 1 || v <= 0) continue;
-      return { i: j - 1, f: Math.max(f, clamp((H - r.top) / (H - end), 0, 1)) };
-    }
-    if (v > 0) return { i: j - 1, f };
+// Each spot gets the scroll position at which it sits in the middle of the screen. The bee sits on a spot
+// around that moment and flies to the next one in between. Hops are spread out so none is rushed,
+// and the last landing (the footer flower) is reached by the end of the page.
+const speedOf = s => s.fl ? (+s.fl.dataset.speed || 0) : 0;
+function plan() {
+  const H = innerHeight, sy = scrollY, maxS = Math.max(0, document.documentElement.scrollHeight - H), n = STOPS.length;
+  // where the spot is now, corrected for its parallax drift, tells when it will be mid-screen
+  const N = STOPS.map(s => sy + (trigY(s) - H * .5) / (1 - speedOf(s)));
+  N[0] = 0;
+  // every hop gets at least 45% of a screen of scrolling
+  for (let k = 1; k < n; k++) N[k] = Math.max(N[k], N[k - 1] + H * .45);
+  // the end of the page is short (price cards, then the footer): share what is left evenly
+  if (N[n - 1] > maxS) {
+    let m = n - 2;
+    while (m > 0 && N[m] + (n - 1 - m) * H * .3 > maxS) m--;
+    for (let k = m + 1; k < n; k++) N[k] = N[m] + (k - m) * (maxS - N[m]) / (n - 1 - m);
   }
-  return { i: STOPS.length - 2, f: 1 };
+  return N;
+}
+function progress() {
+  const H = innerHeight, N = plan(), sy = scrollY;
+  for (let k = 0; k < N.length - 1; k++) {
+    if (sy < N[k + 1] || k === N.length - 2) {
+      const G = N[k + 1] - N[k], d = Math.min(H * .12, G * .18);
+      return { i: k, f: clamp((sy - N[k] - d) / Math.max(1, G - 2 * d), 0, 1) };
+    }
+  }
+  return { i: N.length - 2, f: 1 };
 }
 function targetAt() {
   let { i, f } = progress(); if (!isFinite(f)) f = 0;
@@ -1026,7 +1025,7 @@ function targetAt() {
   return { x: L(a.x, b.x) + Math.sin(t * Math.PI * 2) * .1 * dir, y: L(a.y, b.y) + m * .16, s: Math.min(L(a.s, b.s) * (1 + m * .55), innerWidth < 760 ? .9 : 1.05), yaw, pitch: L(a.pitch, b.pitch), roll: L(a.roll, b.roll), moving: m, hover: t < .5 ? a.hover : b.hover };
 }
 
-if (location.hash === '#beecheck') window.beeDebug = { STOPS, bloomPx, pose, progress, targetAt };
+if (location.hash === '#beecheck') window.beeDebug = { STOPS, bloomPx, trigY, plan, pose, progress, targetAt };
 const mouse = { x: 0, y: 0, sx: 0, sy: 0 };
 addEventListener('pointermove', e => { mouse.x = e.clientX / innerWidth * 2 - 1; mouse.y = -(e.clientY / innerHeight * 2 - 1); }, { passive: true });
 
@@ -1038,8 +1037,16 @@ function frame() {
   if (!loaded) return;
   const tg = targetAt();
   if (!cur) cur = Object.assign({}, tg);
-  const px = cur.x, py = cur.y, k = 1 - Math.exp(-dt * (3.6 + 10 * perch));
-  for (const n of ['x', 'y', 's', 'pitch', 'roll']) cur[n] += (tg[n] - cur[n]) * k;
+  const px = cur.x, py = cur.y, k = 1 - Math.exp(-dt * 3.2);
+  // position follows like a soft spring with a top speed, so a fast scroll never makes her dart;
+  // a little firmer while she sits, so she stays on her flower as the page moves
+  const w = tg.moving > .02 ? 4.2 : 4.2 + 5 * perch, vmax = innerWidth < 760 ? 1.9 : 1.6;
+  for (const n of ['x', 'y']) {
+    vel[n] += (w * w * (tg[n] - cur[n]) - 2 * w * vel[n]) * dt;
+    vel[n] = clamp(vel[n], -vmax, vmax);
+    cur[n] += vel[n] * dt;
+  }
+  for (const n of ['s', 'pitch', 'roll']) cur[n] += (tg[n] - cur[n]) * k;
   cur.yaw = lerpAngle(cur.yaw, tg.yaw, 1 - Math.exp(-dt * 2.8));
   cur.moving = tg.moving;
   // perched: close to its flower and not travelling
