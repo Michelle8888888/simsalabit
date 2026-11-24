@@ -1,4 +1,4 @@
-name: Make the bee model small
+name: Make the template pictures small
 on:
   push:
     branches: [bee-opt]
@@ -6,22 +6,39 @@ on:
 permissions:
   contents: write
 jobs:
-  bee:
+  pictures:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Download the original bee
-        run: curl -fsSL -o /tmp/bee-original.glb "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261017_132918_e8364d8f-7df2-4788-a725-dec28ec19af8.glb"
-      - name: Small variants for fast loading
+      - name: Download and compress
         run: |
-          npx -y @gltf-transform/cli@4 optimize /tmp/bee-original.glb assets/bee-s768.glb --compress meshopt --texture-compress webp --texture-size 768 --simplify true --simplify-ratio 0.3 --simplify-error 0.004
-          npx -y @gltf-transform/cli@4 optimize /tmp/bee-original.glb assets/bee-s512.glb --compress meshopt --texture-compress webp --texture-size 512 --simplify true --simplify-ratio 0.25 --simplify-error 0.006
-          for f in assets/bee-s768.glb assets/bee-s512.glb; do npx -y @gltf-transform/cli@4 inspect $f > bee-report/$(basename $f .glb).txt 2>&1 || true; done
-          ls -la assets/*.glb
+          pip install --quiet pillow
+          mkdir -p assets/tpl bee-report
+          B=https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P
+          for n in hf_20261016_130303_301c35dd-e2d1-4b40-a396-2b53f884d787 hf_20261017_132814_3a56ac14-47d8-4e49-a163-94234dea5639 hf_20261017_132814_c3d2b090-c27d-49d1-8107-66d0cfa216c2 hf_20261017_132919_c994332b-7f9d-43b5-933d-1e94faa91dd4 hf_20261017_132921_d71538ea-5066-4372-963a-2f2d6468374f hf_20261017_132924_764b726d-d37a-44cc-8eba-662d823d9a4c hf_20261017_132926_a7892ae5-8052-4e4b-96a8-ccbdcaaaa5ad; do
+            curl -fsSL -o /tmp/$n.png "$B/$n.png"
+          done
+          python3 - <<'PY'
+          import glob, os
+          from PIL import Image
+          lines = []
+          for f in sorted(glob.glob('/tmp/hf_*.png')):
+              im = Image.open(f); name = os.path.basename(f)[:-4].split('_')[-1].split('-')[0]
+              before = os.path.getsize(f); w, h = im.size
+              alpha = im.mode in ('RGBA', 'LA') or 'transparency' in im.info
+              im = im.convert('RGBA' if alpha else 'RGB')
+              m = 1800 if not alpha else 1500
+              if max(w, h) > m:
+                  k = m / max(w, h); im = im.resize((round(w * k), round(h * k)), Image.LANCZOS)
+              out = f'assets/tpl/{name}.webp'
+              im.save(out, 'WEBP', quality=82, method=6)
+              lines.append(f'{name}: {w}x{h} {"alpha" if alpha else "opaque"} {before/1e6:.2f} MB -> {im.size[0]}x{im.size[1]} {os.path.getsize(out)/1e6:.2f} MB')
+          open('bee-report/pictures.txt', 'w').write('\n'.join(lines) + '\n'); print('\n'.join(lines))
+          PY
       - name: Save it in the repository
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
-          git add assets bee-report
-          git commit -m "Small bee variants"
+          git add assets/tpl bee-report
+          git commit -m "Compressed copies of the template pictures"
           git push
