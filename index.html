@@ -53,7 +53,7 @@ body.on-dark .nav .wm b { color: var(--violet-lt); }
 body.on-dark .lang button[aria-pressed="true"] { background: #fff; color: var(--ink); }
 
 /* BADGE */
-.badge { position: absolute; z-index: 2; right: var(--pad); bottom: 26px; display: flex; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 500; color: #2b2550; }
+.badge { display: flex; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 500; color: #2b2550; }
 .badge b { font-weight: 700; color: var(--violet); }
 body.on-dark .badge b { color: #d9ccff; }
 .badge svg { width: 20px; height: 20px; }
@@ -150,25 +150,23 @@ main { overflow-x: clip; }
 .sr .text { position: relative; z-index: 2; margin-left: 46vw; padding: 7vh 0 5.5vh; width: min(600px,46vw); }
 .sr .title { margin-top: 22px; }
 .slider { margin-top: 30px; }
-.quotes { display: flex; gap: 22px; overflow-x: auto; overflow-y: hidden; transition: height .45s ease; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; padding: 22px 2px 34px; outline: none; }
-.quotes::-webkit-scrollbar { display: none; }
+.quotes { overflow: hidden; padding: 22px 2px 34px; touch-action: pan-y; transition: height .45s ease; outline: none; }
+.qtrack { display: flex; gap: 22px; transition: transform .5s cubic-bezier(.22,.8,.2,1); will-change: transform; }
+.quotes.drag { cursor: grabbing; user-select: none; -webkit-user-select: none; }
 .quotes:focus-visible { outline: 2px solid var(--violet); outline-offset: 4px; border-radius: 26px; }
-.quote { position: relative; flex: 0 0 100%; min-width: 0; scroll-snap-align: start; align-self: flex-start; padding: 34px 30px 26px; border-radius: 24px; background: rgba(255,255,255,.7); border: 1px solid rgba(255,255,255,.95); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); box-shadow: 0 30px 60px rgba(60,40,140,.1); }
+.quote { position: relative; flex: 0 0 100%; min-width: 0; align-self: flex-start; padding: 34px 30px 26px; border-radius: 24px; background: rgba(255,255,255,.7); border: 1px solid rgba(255,255,255,.95); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); box-shadow: 0 30px 60px rgba(60,40,140,.1); }
 .quote::before { content: "\201C"; position: absolute; top: -14px; left: 24px; font-family: "Instrument Serif", Georgia, serif; font-size: 84px; line-height: 1; color: var(--violet); }
 .quote p { font-size: clamp(14.5px,1.08vw,16px); line-height: 1.65; color: var(--ink); }
 .quote cite { display: block; margin-top: 18px; font-style: normal; font-weight: 600; font-size: 15px; color: var(--title); }
 .quote cite span { display: block; margin-top: 2px; font-weight: 400; font-size: 13.5px; color: var(--muted); }
-.qnav { display: flex; align-items: center; gap: 16px; }
-.qbtn { width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--title); color: var(--title); display: grid; place-items: center; transition: background .3s, color .3s, opacity .3s; }
-.qbtn svg { width: 11px; height: 11px; }
-.qbtn:hover:not(:disabled) { background: var(--title); color: #fff; }
-.qbtn:disabled { opacity: .3; cursor: default; }
-.qdots { display: flex; gap: 8px; }
-.qdots button { width: 9px; height: 9px; border-radius: 99px; background: rgba(58,31,166,.25); transition: width .3s, background .3s; }
-.qdots button[aria-current="true"] { width: 24px; background: var(--title); }
+.qnav { display: flex; justify-content: center; }
+.qdots { display: flex; gap: 4px; }
+.qdots button { display: grid; place-items: center; width: 34px; height: 34px; }
+.qdots button::before { content: ""; width: 10px; height: 10px; border-radius: 99px; background: rgba(58,31,166,.25); transition: width .3s, background .3s; }
+.qdots button[aria-current="true"]::before { width: 26px; background: var(--title); }
 
 /* 05 · prices (flower right) */
-.s3 { background: linear-gradient(180deg, #e9e5fb 0%, #e7e3fb 100%); z-index: 1; height: auto; padding-bottom: 16vh; }
+.s3 { background: linear-gradient(180deg, #e9e5fb 0%, #e7e3fb 100%); z-index: 1; height: auto; padding-bottom: 6.4vh; }
 .s3 .flower--passion { width: clamp(360px,42vw,760px); right: -10vw; top: 2vh; transform-origin: 60% 50%; }
 .s3 .bp { left: 34%; top: 44%; }
 .s3 .text { position: relative; z-index: 2; margin-left: 8vw; padding-top: 8.5vh; width: min(520px,42vw); }
@@ -207,20 +205,25 @@ main { overflow-x: clip; }
 .after .reg-now { display: inline; }
 
 /* CONTACT (flower left) */
-.foot { background: #e7e3fb; height: 100vh; z-index: 1; }
-.foot .flower--up { width: clamp(280px,26vw,460px); left: 25vw; bottom: -4vw; transform-origin: 50% 100%; filter: drop-shadow(0 30px 40px rgba(80,50,160,.18)); z-index: 1; }
+.foot { background: #e7e3fb; height: auto; min-height: 0; z-index: 1; padding: 10vh var(--pad) 22px; }
+.foot .flower--up { width: clamp(240px,20vw,380px); left: 36vw; bottom: 56px; transform-origin: 50% 100%; filter: drop-shadow(0 30px 40px rgba(80,50,160,.18)); z-index: 1; }
 .foot .bp { left: 50%; top: 38%; }
-.foot .brand { position: absolute; left: var(--pad); bottom: 80px; z-index: 2; }
-.foot .brand strong { display: block; font-size: clamp(34px,3.4vw,52px); font-weight: 400; }
-.foot .brand span { display: block; margin-top: 8px; font-size: 14px; color: var(--muted); }
-.foot .cols { position: absolute; z-index: 2; right: calc(var(--pad) + 120px); bottom: 80px; display: flex; gap: 56px; font-size: 14.5px; font-weight: 500; }
-.foot .cols a { display: block; line-height: 1.9; white-space: nowrap; }
-.foot .cols a:hover { color: var(--violet); }
-.foot .cta { position: absolute; z-index: 2; left: 50%; top: 24vh; transform: translateX(-50%); width: min(760px, 92vw); text-align: center; }
+.foot .cta { position: relative; z-index: 2; max-width: 760px; margin: 0 auto; text-align: center; }
 .foot .cta .title { font-size: clamp(30px,3.6vw,60px); }
 .contact { margin-top: 18px; font-size: clamp(15px,1.3vw,18px); color: var(--muted); }
 .contact a { color: var(--ink); font-weight: 600; white-space: nowrap; }
-.copyr { position: absolute; z-index: 2; left: var(--pad); bottom: 30px; font-size: 12.5px; color: var(--muted); }
+.btn-gold { display: inline-flex; align-items: center; gap: 10px; margin-top: 26px; padding: 15px 30px; border-radius: 99px; background: linear-gradient(180deg, #ffd98a 0%, #f4b843 100%); color: #fff; font-weight: 700; font-size: 17px; letter-spacing: .01em; text-shadow: 0 1px 2px rgba(120,70,0,.45); box-shadow: 0 16px 34px -12px rgba(220,150,30,.7), inset 0 1px 0 rgba(255,255,255,.5); transition: transform .3s ease, box-shadow .3s ease; }
+.btn-gold svg { width: 16px; height: 16px; fill: #fff; filter: drop-shadow(0 1px 1px rgba(120,70,0,.4)); }
+.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 20px 40px -12px rgba(220,150,30,.8), inset 0 1px 0 rgba(255,255,255,.5); }
+.fbottom { position: relative; z-index: 2; display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; margin-top: 11vh; }
+.foot .brand strong { display: block; font-size: clamp(34px,3.4vw,52px); font-weight: 400; }
+.foot .brand span { display: block; margin-top: 8px; font-size: 14px; color: var(--muted); }
+.foot .brand span + span { margin-top: 2px; }
+.foot .cols { display: flex; gap: 56px; font-size: 14.5px; font-weight: 500; }
+.foot .cols a { display: block; line-height: 1.9; white-space: nowrap; }
+.foot .cols a:hover { color: var(--violet); }
+.fbase { position: relative; z-index: 2; display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: 34px; padding-top: 16px; border-top: 1px solid rgba(58,31,166,.12); }
+.copyr { font-size: 12.5px; color: var(--muted); }
 
 /* LEGAL OVERLAY */
 .legal { position: fixed; inset: 0; z-index: 70; overflow-y: auto; background: rgba(231,227,251,.97); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
@@ -274,12 +277,10 @@ main { overflow-x: clip; }
   .bfb b { font-size: 15px; }
   .plans { margin-top: 88px; padding: 0 18px; }
   .notes { padding: 0 18px; }
-  .foot .flower--up { width: 64vw; left: auto; right: -14vw; bottom: 0; }
-  .foot .cta { top: 22vh; }
-  .foot .brand { bottom: 190px; }
-  .foot .cols { left: 18px; right: auto; bottom: 66px; gap: 34px; }
-  .copyr { bottom: 24px; left: 18px; }
-  .badge { right: 18px; bottom: 22px; }
+  .foot { padding: 8vh 18px 18px; }
+  .foot .flower--up { width: 50vw; left: auto; right: -14vw; bottom: 54px; }
+  .fbottom { display: block; margin-top: 7vh; }
+  .foot .cols { margin-top: 22px; gap: 26px; }
 }
 @media (max-width: 380px) { .nav__cta { display: none; } }
 @media (prefers-reduced-motion: reduce) {
@@ -385,6 +386,7 @@ main { overflow-x: clip; }
       <h2 class="title reveal d1" data-k="rt">Was meine<br>Kunden sagen</h2>
       <div class="slider reveal d2">
         <div class="quotes" id="quotes" tabindex="0" role="region" aria-label="Kundenstimmen" data-karia="qaria">
+          <div class="qtrack">
           <blockquote class="quote">
             <p data-k="q1">Mit der Erstellung meiner Website war ich rundum zufrieden. Die ganze Zusammenarbeit war professionell, die Kommunikation hervorragend, und alle meine Wünsche wurden bereitwillig angehört und umgesetzt. Ich schätze Michaelas Kreativität, ihre Präzision, ihre Hilfsbereitschaft und ihr Gespür für Details. Die fertige Website wirkt modern, professionell und genau so, wie ich sie mir vorgestellt habe. Dafür bin ich sehr dankbar. Sie hat ihr Herz hineingesteckt.</p>
             <cite>Milan<span data-k="q1r">Massage</span></cite>
@@ -397,12 +399,9 @@ main { overflow-x: clip; }
             <p data-k="q2">Danke für die super Zusammenarbeit: hervorragende Kommunikation, ein professionelles Vorgehen und Begleitung während des ganzen Projekts, alles auf hohem Niveau. Immer pünktlich und bereit, auf alle Fragen einzugehen. Eine wahre Fundgrube an kreativen Ideen. Die Website hat meine Erwartungen übertroffen. Michaela hat sich nicht nur um die Website gekümmert, sondern auch um Domain, Hosting, E-Mail, das Design des Flyers, die Visitenkarten und das Google-Konto. Ich musste mich um nichts kümmern. Ich kann Michaela allen empfehlen, die ihre Online-Projekte in gute Hände geben möchten.</p>
             <cite>Jozef</cite>
           </blockquote>
+          </div>
         </div>
-        <div class="qnav">
-          <button class="qbtn" type="button" data-dir="-1" aria-label="Vorherige Bewertung" data-karia="qprev"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M7 1L3 5l4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
-          <div class="qdots"></div>
-          <button class="qbtn" type="button" data-dir="1" aria-label="Nächste Bewertung" data-karia="qnext"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M3 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
-        </div>
+        <div class="qnav"><div class="qdots"></div></div>
       </div>
     </div>
   </section>
@@ -488,18 +487,18 @@ main { overflow-x: clip; }
     <div class="cta">
       <h2 class="title reveal" data-k="ft">Bereit für ein bisschen Magie?</h2>
       <p class="contact reveal d1"><a href="mailto:magic@simsalabit.ch">magic@simsalabit.ch</a> · <a href="tel:+41766429105">+41 76 642 91 05</a></p>
-      <a class="join reveal d2" href="mailto:magic@simsalabit.ch?subject=Meine%20neue%20Website"><i><svg><use href="#chev"/></svg></i><span data-k="fj">Schreiben Sie mir</span></a>
+      <a class="btn-gold reveal d2" href="mailto:magic@simsalabit.ch?subject=Meine%20neue%20Website"><svg viewBox="0 0 40 40" aria-hidden="true"><use href="#spark"/></svg><span data-k="fj">Schreiben Sie mir</span></a>
     </div>
-    <div class="brand reveal"><strong class="wm">Simsala<b>b<i>ı<svg viewBox="0 0 40 40"><use href="#spark"/></svg></i>t</b></strong><span data-k="tag">Websites mit einem Hauch Magie · Zürich, Schweiz</span></div>
-    <div class="cols reveal d1">
-      <div><a href="#services" data-k="n1b">Leistungen</a><a href="#about" data-k="n2b">Über mich</a><a href="#reviews" data-k="n3b">Stimmen</a><a href="#prices" data-k="n4b">Preise</a></div>
-      <div><a href="mailto:magic@simsalabit.ch" data-k="mail">E-Mail</a><a href="tel:+41766429105" data-k="call">Anrufen</a></div>
-      <div><a href="#impressum" data-k="imp">Impressum</a><a href="#datenschutz" data-k="dsg">Datenschutz</a></div>
+    <div class="fbottom">
+      <div class="brand reveal"><strong class="wm">Simsala<b>b<i>ı<svg viewBox="0 0 40 40"><use href="#spark"/></svg></i>t</b></strong><span data-k="tag1">Websites mit einem Hauch Magie</span><span data-k="tag2">Zürich, Schweiz</span></div>
+      <div class="cols reveal d1">
+        <div><a href="#services" data-k="n1b">Leistungen</a><a href="#about" data-k="n2b">Über mich</a><a href="#reviews" data-k="n3b">Stimmen</a><a href="#prices" data-k="n4b">Preise</a></div>
+        <div><a href="mailto:magic@simsalabit.ch" data-k="mail">E-Mail</a><a href="tel:+41766429105" data-k="call">Anrufen</a><a href="#impressum" data-k="imp">Impressum</a><a href="#datenschutz" data-k="dsg">Datenschutz</a></div>
+      </div>
     </div>
-    <p class="copyr">© 2026 Simsalabit</p>
-    <div class="badge">
-      <svg viewBox="0 0 40 40" fill="currentColor"><use href="#spark"/></svg>
-      <span data-k="made">Gezaubert von</span> <b>Simsalabit</b>
+    <div class="fbase">
+      <p class="copyr">© 2026 Simsalabit</p>
+      <div class="badge"><svg viewBox="0 0 40 40" fill="currentColor"><use href="#spark"/></svg><span data-k="made">Gezaubert von</span> <b>Simsalabit</b></div>
     </div>
   </section>
 </main>
@@ -573,24 +572,37 @@ main { overflow-x: clip; }
   // Launch prices switch to regular prices on 1 December 2026, Zurich time
   if (Date.now() >= Date.parse('2026-12-01T00:00:00+01:00')) document.getElementById('prices').classList.add('after');
 
-  // ---------- Review slider: swipe, arrows, dots and arrow keys ----------
+  // ---------- Review slider: one review per swipe, dots and arrow keys ----------
   const qBox = document.getElementById('quotes');
-  const qCards = [...qBox.children];
+  const qTrack = qBox.querySelector('.qtrack');
+  const qCards = [...qTrack.children];
   const qWrap = qBox.parentElement.querySelector('.qdots');
-  let dotLabel = 'Bewertung';
-  const qDots = qCards.map((c, i) => { const d = document.createElement('button'); d.type = 'button'; d.setAttribute('aria-label', dotLabel + ' ' + (i + 1)); d.addEventListener('click', () => qGo(i)); qWrap.appendChild(d); return d; });
-  const [qPrev, qNext] = qBox.parentElement.querySelectorAll('.qbtn');
+  let dotLabel = 'Bewertung', qi = 0;
   const qStep = () => qCards.length > 1 ? qCards[1].offsetLeft - qCards[0].offsetLeft : qBox.clientWidth;
-  const qIdx = () => Math.round(qBox.scrollLeft / qStep());
-  const qGo = i => { i = Math.max(0, Math.min(qCards.length - 1, i)); qBox.scrollTo({ left: i * qStep() }); };
-  const qSync = () => { const i = Math.max(0, Math.min(qCards.length - 1, qIdx())); qBox.style.height = (qCards[i].offsetHeight + 56) + 'px'; qDots.forEach((d, k) => d.setAttribute('aria-current', String(k === i))); qPrev.disabled = i === 0; qNext.disabled = i === qCards.length - 1; };
-  qPrev.addEventListener('click', () => qGo(qIdx() - 1));
-  qNext.addEventListener('click', () => qGo(qIdx() + 1));
-  qBox.addEventListener('keydown', e => { if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') { e.preventDefault(); qGo(qIdx() + (e.key === 'ArrowRight' ? 1 : -1)); } });
-  qBox.addEventListener('scroll', qSync, { passive: true });
-  addEventListener('resize', qSync);
+  const qSet = (dx, anim) => { qTrack.style.transition = anim === false ? 'none' : ''; qTrack.style.transform = 'translate3d(' + (-qi * qStep() + (dx || 0)) + 'px,0,0)'; };
+  const qSync = () => { qBox.style.height = (qCards[qi].offsetHeight + 56) + 'px'; qDots.forEach((d, k) => d.setAttribute('aria-current', String(k === qi))); };
+  const qGo = i => { qi = Math.max(0, Math.min(qCards.length - 1, i)); qSet(); qSync(); };
+  const qDots = qCards.map((c, i) => { const d = document.createElement('button'); d.type = 'button'; d.setAttribute('aria-label', dotLabel + ' ' + (i + 1)); d.addEventListener('click', () => qGo(i)); qWrap.appendChild(d); return d; });
+  // swipe: a short swipe (about 3 cm) is enough, and it always moves exactly one review
+  let qx = null, qy = 0, qdx = 0, qh = null;
+  qBox.addEventListener('pointerdown', e => { if (e.pointerType === 'mouse' && e.button !== 0) return; qx = e.clientX; qy = e.clientY; qdx = 0; qh = null; });
+  addEventListener('pointermove', e => {
+    if (qx === null) return;
+    const mx = e.clientX - qx, my = e.clientY - qy;
+    if (qh === null && (Math.abs(mx) > 6 || Math.abs(my) > 6)) { qh = Math.abs(mx) > Math.abs(my); if (qh) qBox.classList.add('drag'); }
+    if (qh) { qdx = mx; const edge = (qi === 0 && mx > 0) || (qi === qCards.length - 1 && mx < 0); qSet(mx * (edge ? .3 : 1), false); }
+  }, { passive: true });
+  const qEnd = () => {
+    if (qx === null) return;
+    if (qh && Math.abs(qdx) > 30) qGo(qi + (qdx < 0 ? 1 : -1)); else qSet();
+    qx = null; qh = null; qBox.classList.remove('drag');
+  };
+  addEventListener('pointerup', qEnd); addEventListener('pointercancel', qEnd);
+  qBox.addEventListener('click', e => { if (Math.abs(qdx) > 6) { e.preventDefault(); e.stopPropagation(); } }, true);
+  qBox.addEventListener('keydown', e => { if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') { e.preventDefault(); qGo(qi + (e.key === 'ArrowRight' ? 1 : -1)); } });
+  addEventListener('resize', () => { qSet(0, false); qSync(); });
   addEventListener('load', qSync);
-  qSync();
+  qGo(0);
 
   // ---------- Languages: German is written in the page, English comes from this list ----------
   const EN = {
@@ -627,7 +639,7 @@ main { overflow-x: clip; }
     q1r: 'Massage',
     q2: 'Thank you for a great collaboration: excellent communication, a professional approach and guidance throughout the whole project, all at a very high level. Always on time and ready to answer every question. A real treasure chest of creative ideas. The website exceeded my expectations. Michaela took care of not just the website but also the domain, hosting, email, the flyer design, business cards and the Google account. I didn’t have to worry about anything. I can recommend Michaela to anyone who needs their online projects in good hands.',
     q3: 'Michaela has made two websites for me, and each one exceeded my expectations. All my friends and family asked me who made the websites for my online shops. The cooperation was very professional, friendly and full of creative ideas. I can highly recommend Michaela as the go-to person for any web design.',
-    q3r: 'Two online shops', qaria: 'Client reviews', qprev: 'Previous review', qnext: 'Next review', qdot: 'Review',
+    q3r: 'Two online shops', qaria: 'Client reviews', qdot: 'Review',
     bfs: 'magic prices',
     pt: 'Pick your<br>spell',
     pbf: '<strong>Black Friday launch prices</strong> for projects booked by 30 November 2026. Regular prices apply from 1 December.',
@@ -644,7 +656,7 @@ main { overflow-x: clip; }
     n7: '<strong>Payment 80/20:</strong> you pay 80% when you book and 20% when the finished project is delivered.',
     n6: 'All prices are starting prices in CHF. Printing, and the fees of booking or payment tools, are paid directly to their providers.',
     ft: 'Ready for a little magic?', fj: 'Write to me',
-    tag: 'Websites with a bit of magic · Zurich, Switzerland',
+    tag1: 'Websites with a bit of magic', tag2: 'Zurich, Switzerland',
     mail: 'Email', call: 'Call', imp: 'Legal notice', dsg: 'Privacy policy',
     made: 'Made by',
     lnote: 'This legal information is available in German only.'
@@ -912,7 +924,7 @@ function progress() {
   const H = innerHeight;
   for (let j = 1; j < STOPS.length; j++) {
     const s = STOPS[j];
-    if (s.trig === 'sec') { const top = s.sec.getBoundingClientRect().top; if (top > H * .02) return { i: j - 1, f: clamp((H - top) / (H * .98), 0, 1) }; continue; }
+    if (s.trig === 'sec') { const r = s.sec.getBoundingClientRect(), end = Math.max(H * .02, H - r.height); if (r.top > end + 1) return { i: j - 1, f: clamp((H - r.top) / (H - end), 0, 1) }; continue; }
     const by = bloomPx(s).y;
     if (by > H * .55) return { i: j - 1, f: clamp((H * 1.08 - by) / (H * .53), 0, 1) };
   }
