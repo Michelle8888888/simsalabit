@@ -1,0 +1,31 @@
+name: Make the bee model small
+on:
+  push:
+    branches: [bee-opt]
+    paths: ['.github/workflows/bee.yml']
+permissions:
+  contents: write
+jobs:
+  bee:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download the original bee
+        run: curl -fsSL -o /tmp/bee-original.glb "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261017_132918_e8364d8f-7df2-4788-a725-dec28ec19af8.glb" && ls -la /tmp/bee-original.glb
+      - name: Report what is inside
+        run: |
+          mkdir -p bee-report
+          npx -y @gltf-transform/cli@4 inspect /tmp/bee-original.glb > bee-report/original.txt 2>&1 || true
+      - name: Compress (geometry with meshopt, textures as WebP at most 1024 px)
+        run: |
+          mkdir -p assets
+          npx -y @gltf-transform/cli@4 optimize /tmp/bee-original.glb assets/bee.glb --compress meshopt --texture-compress webp --texture-size 1024 --simplify false
+          npx -y @gltf-transform/cli@4 inspect assets/bee.glb > bee-report/small.txt 2>&1 || true
+          ls -la assets/bee.glb
+      - name: Save it in the repository
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add assets/bee.glb bee-report
+          git commit -m "Small bee model (compressed copy of the template bee)"
+          git push
