@@ -44,12 +44,7 @@ body.scrolled .nav::before { opacity: 1; }
 body.on-dark .nav::before { background: linear-gradient(180deg, rgba(40,20,110,.94) 55%, rgba(40,20,110,0)); }
 .logo { display: flex; align-items: center; height: 40px; margin-right: clamp(10px,4vw,56px); font-size: 27px; }
 .logo:hover .wm i svg { transform: translateX(-50%) rotate(90deg); }
-.nav__links { display: flex; gap: clamp(18px,3.2vw,46px); font-size: 15.5px; font-weight: 400; }
-.nav__links a { position: relative; white-space: nowrap; }
-.nav__links a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -3px; height: 1.5px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform .35s ease; }
-.nav__links a:hover::after { transform: scaleX(1); }
-.nav__cta { margin-left: auto; font-weight: 600; font-size: 16px; white-space: nowrap; }
-.lang { display: flex; padding: 3px; border-radius: 99px; border: 1.5px solid currentColor; font-size: 12.5px; font-weight: 600; letter-spacing: .04em; }
+.lang { display: flex; margin-left: auto; padding: 3px; border-radius: 99px; border: 1.5px solid currentColor; font-size: 12.5px; font-weight: 600; letter-spacing: .04em; }
 .lang button { min-width: 34px; height: 28px; padding: 0 8px; border-radius: 99px; transition: background .3s, color .3s; }
 .lang button[aria-pressed="true"] { background: var(--title); color: #fff; }
 .nav { transition: color .5s ease; }
@@ -284,7 +279,6 @@ main { overflow-x: clip; }
 }
 
 /* NARROWER SCREENS */
-@media (max-width: 1100px) { .nav__links { display: none; } }
 @media (max-width: 1020px) {
   .plans { grid-template-columns: minmax(0, 560px); justify-content: center; gap: 30px; }
 }
@@ -293,7 +287,6 @@ main { overflow-x: clip; }
 @media (max-width: 760px) {
   .nav { gap: 10px; }
   .logo { font-size: 23px; margin-right: 0; }
-  .nav__cta { font-size: 15px; }
   .lang button { min-width: 30px; height: 26px; padding: 0 6px; }
   .hero h1 { top: 14vh; }
   .hero__side { top: 57vh; width: 86vw; }
@@ -319,7 +312,6 @@ main { overflow-x: clip; }
   .fbottom { display: block; margin-top: 14vh; }
   .foot .cols { margin-top: 22px; gap: 26px; }
 }
-@media (max-width: 380px) { .nav__cta { display: none; } }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
   .hero h1 .line span { transform: none; animation: none !important; }
@@ -344,8 +336,6 @@ main { overflow-x: clip; }
 
 <nav class="nav">
   <a class="logo" href="#top" aria-label="Simsalabit"><span class="wm">Simsala<b>b<i>ı<svg viewBox="0 0 40 40"><use href="#spark"/></svg></i>t</b></span></a>
-  <div class="nav__links"><a href="#services" data-k="n1">Leistungen</a><a href="#about" data-k="n2">Über mich</a><a href="#reviews" data-k="n3">Stimmen</a><a href="#prices" data-k="n4">Preise</a></div>
-  <a class="nav__cta" href="#contact" data-k="cta">Kontakt</a>
   <div class="lang" role="group" aria-label="Sprache / Language"><button type="button" data-lang="de" aria-pressed="true">DE</button><button type="button" data-lang="en" aria-pressed="false">EN</button></div>
 </nav>
 
@@ -645,7 +635,6 @@ main { overflow-x: clip; }
   const EN = {
     title: 'Simsalabit | Websites with a bit of magic',
     desc: 'Websites with a bit of magic for small businesses. Designed, written and live in one to four weeks.',
-    n1: 'Services', n2: 'About', n3: 'Reviews', n4: 'Prices', cta: 'Let’s talk',
     n1b: 'Services', n2b: 'About', n3b: 'Reviews', n4b: 'Prices',
     h1a: 'Even a small business', h1b: 'deserves a big show',
     hs: 'I make websites that people remember.',
