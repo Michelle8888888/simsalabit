@@ -53,7 +53,7 @@ body.on-dark .nav .wm b { color: var(--violet-lt); }
 body.on-dark .lang button[aria-pressed="true"] { background: #fff; color: var(--ink); }
 
 /* BADGE */
-.badge { position: fixed; z-index: 30; right: var(--pad); bottom: 22px; display: flex; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 500; color: #2b2550; }
+.badge { position: absolute; z-index: 2; right: var(--pad); bottom: 26px; display: flex; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 500; color: #2b2550; }
 .badge b { font-weight: 700; color: var(--violet); }
 body.on-dark .badge b { color: #d9ccff; }
 .badge svg { width: 20px; height: 20px; }
@@ -269,6 +269,7 @@ section { position: relative; min-height: 100vh; height: 100vh; overflow: hidden
   .foot .brand { bottom: 190px; }
   .foot .cols { left: 18px; right: auto; bottom: 66px; gap: 34px; }
   .copyr { bottom: 24px; left: 18px; }
+  .badge { right: 18px; bottom: 22px; }
 }
 @media (max-width: 380px) { .nav__cta { display: none; } }
 @media (prefers-reduced-motion: reduce) {
@@ -475,13 +476,13 @@ section { position: relative; min-height: 100vh; height: 100vh; overflow: hidden
       <div><a href="#impressum" data-k="imp">Impressum</a><a href="#datenschutz" data-k="dsg">Datenschutz</a></div>
     </div>
     <p class="copyr">© 2026 Simsalabit</p>
+    <div class="badge">
+      <svg viewBox="0 0 40 40" fill="currentColor"><use href="#spark"/></svg>
+      <span data-k="made">Gezaubert von</span> <b>Simsalabit</b>
+    </div>
   </section>
 </main>
 
-<div class="badge">
-  <svg viewBox="0 0 40 40" fill="currentColor"><use href="#spark"/></svg>
-  <span data-k="made">Gezaubert von</span> <b>Simsalabit</b>
-</div>
 
 <div class="legal" id="legal" hidden role="dialog" aria-modal="true" aria-label="Impressum und Datenschutz">
   <button class="legal__x" type="button" aria-label="Schliessen / Close">×</button>
