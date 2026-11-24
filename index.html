@@ -132,6 +132,12 @@ main { overflow-x: clip; }
 .s2 .vals span { color: rgba(240,234,255,.78); }
 .s2 .flower--iris { width: clamp(320px,36vw,640px); right: -8vw; top: -6vw; transform-origin: 60% 20%; filter: drop-shadow(0 40px 60px rgba(20,0,60,.45)); z-index: 1; }
 .s2 .bp { left: 45%; top: 42%; }
+/* the whole wisteria (both strands) comes in from the left at the bottom of 02 and reaches into the top of 03;
+   02 lets it hang out at the bottom only (the iris stays cut off at the top as before) */
+.s2 { overflow: visible; clip-path: inset(0 0 -70vh 0); }
+.s2 .flower--wis { width: min(19vw, 28vh); left: calc(min(19vw, 28vh) * -.61); top: calc(100% - min(19vw, 28vh) * .44); z-index: 1; }
+.s2 .flower--wis .fl-in { transform-origin: 48.4% 0; transform: rotate(-66deg); filter: drop-shadow(0 24px 30px rgba(20,0,60,.35)); }
+.s2 .flower--wis .bp { left: 50%; top: 28%; }
 
 /* 03 · about (photo and flower right) */
 .sa { background: linear-gradient(180deg, #e7e3fb 0%, #ece9fc 100%); z-index: 2; height: auto; display: grid; grid-template-columns: minmax(0,560px) minmax(0,430px); justify-content: space-between; align-items: center; gap: 6vw; padding: 20vh 8vw 6vh; overflow-x: clip; overflow-y: visible; }
@@ -147,10 +153,7 @@ main { overflow-x: clip; }
 .portrait img { display: block; width: 100%; height: auto; }
 .sa .flower--cosmos2 { width: 64%; right: -30%; bottom: -52%; transform-origin: 50% 50%; filter: drop-shadow(0 24px 30px rgba(80,50,160,.2)); z-index: 3; }
 .sa .bp { left: 50%; top: 38%; }
-/* wisteria reaching in from the left, its branch just off the edge, tilted down about 30 degrees */
-.sa .flower--wis { width: 16vw; left: -9vw; top: 0; z-index: 1; }
-.sa .flower--wis .fl-in { transform-origin: 50% 0; transform: rotate(-60deg); filter: drop-shadow(0 26px 30px rgba(70,50,170,.18)); }
-.sa .flower--wis .bp { left: 50%; top: 30%; }
+
 
 /* 04 · reviews (peony from the left) */
 .sr { background: linear-gradient(180deg, #ece9fc 0%, #e9e5fb 100%); z-index: 1; height: auto; min-height: 0; }
@@ -302,8 +305,8 @@ main { overflow-x: clip; }
   .s1 .text { margin: 0; width: auto; padding: 20vh 18px 8.6vh; }
   .s2 .text { margin: 0; width: auto; padding: 8vh 18px 11.2vh; }
   .s2 .flower--iris { width: 60vw; right: -16vw; top: -8vw; }
+  .s2 .flower--wis { width: 34vw; left: -18.5vw; top: calc(100% - 9vh); }
   .sa { grid-template-columns: minmax(0,1fr); gap: 44px; padding: 28vh 18px 9vh; }
-  .sa .flower--wis { width: 28vw; left: -15vw; top: 1vh; }
   .sa-vis { justify-self: center; width: 80vw; max-width: 420px; }
   .sa .flower--cosmos2 { width: 58%; right: -22%; bottom: -30%; }
   .sr .flower--peony { width: 92vw; left: -20vw; top: 2vh; }
@@ -377,6 +380,7 @@ main { overflow-x: clip; }
 
   <section class="s2" id="how" data-theme="dark">
     <div class="flower flower--iris" data-speed="0.18" data-rot="8" data-side="R"><div class="fl-in"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261017_132926_a7892ae5-8052-4e4b-96a8-ccbdcaaaa5ad.png" crossorigin="anonymous" onerror="this.onerror=null;this.removeAttribute('crossorigin');this.src=this.src" alt=""><i class="bp"></i></div></div>
+    <div class="flower flower--wis" data-speed="0.05" data-rot="2"><div class="fl-in"><img src="assets/wisteria-full.webp" alt=""><i class="bp"></i></div></div>
     <div class="text">
       <div class="num reveal" aria-hidden="true">02</div>
       <h2 class="title reveal d1" data-k="s2t">Vorne Magie, <br>dahinter bewährte <br>Werkzeuge</h2>
@@ -390,7 +394,6 @@ main { overflow-x: clip; }
   </section>
 
   <section class="sa" id="about" data-theme="light">
-    <div class="flower flower--wis" data-speed="-0.12" data-rot="3"><div class="fl-in"><img src="assets/wisteria.webp" alt=""><i class="bp"></i></div></div>
     <div class="text">
       <div class="num reveal" aria-hidden="true">03</div>
       <h2 class="title reveal d1" data-k="at">Hallo, ich bin<br>Michaela</h2>
@@ -814,7 +817,7 @@ const STOPS = [
   { sel: '#services .flower' },
   { sel: '#services .perch', hover: 1 },
   { sel: '#how .flower' },
-  { sel: '#about .flower--wis' },
+  { sel: '#how .flower--wis', hold: 1 },
   { sel: '#about .flower--cosmos2' },
   { sel: '#reviews .flower' },
   { sel: '#prices .flower' },
@@ -825,7 +828,7 @@ const STOPS = [
 ].map(o => {
   const el = document.querySelector(o.sel); if (!el) return null;
   const fl = el.classList.contains('flower') ? el : null;
-  return { fl, sec: el.closest('section'), bp: fl ? fl.querySelector('.bp') : el, centre: el.classList.contains('bee-spot'), big: o.big || 0, hover: !!o.hover, card: o.card, lift: o.card != null ? .1 : o.hover ? 0 : .03, img: fl && (fl.querySelector('img[data-bloom]') || fl.querySelector('img')), auto: !fl };
+  return { fl, sec: el.closest('section'), bp: fl ? fl.querySelector('.bp') : el, centre: el.classList.contains('bee-spot'), big: o.big || 0, hold: !!o.hold, hover: !!o.hover, card: o.card, lift: o.card != null ? .1 : o.hover ? 0 : .03, img: fl && (fl.querySelector('img[data-bloom]') || fl.querySelector('img')), auto: !fl };
 }).filter(s => s && s.bp);
 function findBloom(img) {
   const W = 128, H = Math.max(8, Math.round(128 * img.naturalHeight / img.naturalWidth)), N = W * H;
@@ -998,7 +1001,8 @@ function plan() {
   const N = STOPS.map(s => sy + (trigY(s) - H * .5) / (1 - speedOf(s)));
   N[0] = 0;
   // every hop gets at least 45% of a screen of scrolling
-  for (let k = 1; k < n; k++) N[k] = Math.max(N[k], N[k - 1] + H * .45);
+  const HOLD = H * .28; // extra sitting time on each side of a stop marked hold (about 1 to 2 seconds of normal scrolling)
+  for (let k = 1; k < n; k++) N[k] = Math.max(N[k], N[k - 1] + H * .45 + (STOPS[k].hold ? HOLD : 0) + (STOPS[k - 1].hold ? HOLD : 0));
   // the end of the page is short (price cards, then the footer): share what is left evenly
   if (N[n - 1] > maxS) {
     let m = n - 2;
@@ -1012,7 +1016,9 @@ function progress() {
   for (let k = 0; k < N.length - 1; k++) {
     if (sy < N[k + 1] || k === N.length - 2) {
       const G = N[k + 1] - N[k], d = Math.min(H * .12, G * .18);
-      return { i: k, f: clamp((sy - N[k] - d) / Math.max(1, G - 2 * d), 0, 1) };
+      let dA = STOPS[k].hold ? Math.max(d, H * .28) : d, dB = STOPS[k + 1].hold ? Math.max(d, H * .28) : d;
+      if (G - dA - dB < H * .18) { const sc = Math.max(0, G - H * .18) / (dA + dB); dA *= sc; dB *= sc; }
+      return { i: k, f: clamp((sy - N[k] - dA) / Math.max(1, G - dA - dB), 0, 1) };
     }
   }
   return { i: N.length - 2, f: 1 };
