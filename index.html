@@ -39,18 +39,16 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 /* NAV */
 .nav { position: fixed; z-index: 30; top: 0; left: 0; right: 0; display: flex; align-items: center; gap: 18px; padding: 18px var(--pad) 0; pointer-events: none; }
 .nav > * { pointer-events: auto; }
-.nav::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: calc(100% + 30px); background: linear-gradient(180deg, rgba(231,227,251,.96) 55%, rgba(231,227,251,0)); opacity: 0; transition: opacity .4s ease; pointer-events: none; z-index: -1; }
+/* header band: light and almost white everywhere (also over the dark section 02), 15% taller than before,
+   fully solid behind the logo and the language switch, then fading out */
+.nav::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: calc(100% + 43px); background: linear-gradient(180deg, rgba(251,250,255,.92) 0, rgba(251,250,255,.92) calc(100% - 34px), rgba(251,250,255,0) 100%); opacity: 0; transition: opacity .4s ease; pointer-events: none; z-index: -1; }
 body.scrolled .nav::before { opacity: 1; }
-body.on-dark .nav::before { background: linear-gradient(180deg, rgba(40,20,110,.94) 55%, rgba(40,20,110,0)); }
 .logo { display: flex; align-items: center; height: 40px; margin-right: clamp(10px,4vw,56px); font-size: 27px; }
 .logo:hover .wm i svg { transform: translateX(-50%) rotate(90deg); }
 .lang { display: flex; margin-left: auto; padding: 3px; border-radius: 99px; border: 1.5px solid currentColor; font-size: 12.5px; font-weight: 600; letter-spacing: .04em; }
 .lang button { min-width: 34px; height: 28px; padding: 0 8px; border-radius: 99px; transition: background .3s, color .3s; }
 .lang button[aria-pressed="true"] { background: var(--title); color: #fff; }
 .nav { transition: color .5s ease; }
-body.on-dark .nav { color: #fff; }
-body.on-dark .nav .wm b { color: var(--violet-lt); }
-body.on-dark .lang button[aria-pressed="true"] { background: #fff; color: var(--ink); }
 
 /* BADGE */
 
