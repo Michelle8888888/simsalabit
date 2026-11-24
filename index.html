@@ -147,8 +147,10 @@ main { overflow-x: clip; }
 .portrait img { display: block; width: 100%; height: auto; }
 .sa .flower--cosmos2 { width: 64%; right: -30%; bottom: -52%; transform-origin: 50% 50%; filter: drop-shadow(0 24px 30px rgba(80,50,160,.2)); z-index: 3; }
 .sa .bp { left: 50%; top: 38%; }
-.sa .flower--passion { width: clamp(300px,26vw,480px); left: -7vw; top: -3vw; transform-origin: 40% 50%; z-index: 1; }
-.sa .flower--passion .bp { left: 50%; top: 42%; }
+/* wisteria reaching in from the left, its branch just off the edge, tilted down about 30 degrees */
+.sa .flower--wis { width: 16vw; left: -9vw; top: 0; z-index: 1; }
+.sa .flower--wis .fl-in { transform-origin: 50% 0; transform: rotate(-60deg); filter: drop-shadow(0 26px 30px rgba(70,50,170,.18)); }
+.sa .flower--wis .bp { left: 50%; top: 30%; }
 
 /* 04 · reviews (peony from the left) */
 .sr { background: linear-gradient(180deg, #ece9fc 0%, #e9e5fb 100%); z-index: 1; height: auto; min-height: 0; }
@@ -301,7 +303,7 @@ main { overflow-x: clip; }
   .s2 .text { margin: 0; width: auto; padding: 8vh 18px 11.2vh; }
   .s2 .flower--iris { width: 60vw; right: -16vw; top: -8vw; }
   .sa { grid-template-columns: minmax(0,1fr); gap: 44px; padding: 28vh 18px 9vh; }
-  .sa .flower--passion { width: 58vw; left: -16vw; top: -1vh; }
+  .sa .flower--wis { width: 28vw; left: -15vw; top: 1vh; }
   .sa-vis { justify-self: center; width: 80vw; max-width: 420px; }
   .sa .flower--cosmos2 { width: 58%; right: -22%; bottom: -30%; }
   .sr .flower--peony { width: 92vw; left: -20vw; top: 2vh; }
@@ -388,7 +390,7 @@ main { overflow-x: clip; }
   </section>
 
   <section class="sa" id="about" data-theme="light">
-    <div class="flower flower--passion" data-speed="-0.12" data-rot="6"><div class="fl-in"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261017_132921_d71538ea-5066-4372-963a-2f2d6468374f.png" crossorigin="anonymous" onerror="this.onerror=null;this.removeAttribute('crossorigin');this.src=this.src" alt=""><i class="bp"></i></div></div>
+    <div class="flower flower--wis" data-speed="-0.12" data-rot="3"><div class="fl-in"><img src="assets/wisteria.webp" alt=""><i class="bp"></i></div></div>
     <div class="text">
       <div class="num reveal" aria-hidden="true">03</div>
       <h2 class="title reveal d1" data-k="at">Hallo, ich bin<br>Michaela</h2>
@@ -812,7 +814,7 @@ const STOPS = [
   { sel: '#services .flower' },
   { sel: '#services .perch', hover: 1 },
   { sel: '#how .flower' },
-  { sel: '#about .flower--passion' },
+  { sel: '#about .flower--wis' },
   { sel: '#about .flower--cosmos2' },
   { sel: '#reviews .flower' },
   { sel: '#prices .flower' },
