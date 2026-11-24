@@ -148,13 +148,23 @@ section { position: relative; min-height: 100vh; height: 100vh; overflow: hidden
 .sr .bp { left: 53%; top: 30%; }
 .sr .text { position: relative; z-index: 2; margin-left: 46vw; padding: 18vh 0 11vh; width: min(600px,46vw); }
 .sr .title { margin-top: 22px; }
-.quotes { display: grid; gap: 26px; margin-top: 40px; }
-.quote { position: relative; padding: 34px 30px 26px; border-radius: 24px; background: rgba(255,255,255,.7); border: 1px solid rgba(255,255,255,.95); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); box-shadow: 0 30px 60px rgba(60,40,140,.1); }
+.slider { margin-top: 30px; }
+.quotes { display: flex; gap: 22px; overflow-x: auto; overflow-y: hidden; transition: height .45s ease; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; padding: 22px 2px 34px; outline: none; }
+.quotes::-webkit-scrollbar { display: none; }
+.quotes:focus-visible { outline: 2px solid var(--violet); outline-offset: 4px; border-radius: 26px; }
+.quote { position: relative; flex: 0 0 100%; min-width: 0; scroll-snap-align: start; align-self: flex-start; padding: 34px 30px 26px; border-radius: 24px; background: rgba(255,255,255,.7); border: 1px solid rgba(255,255,255,.95); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); box-shadow: 0 30px 60px rgba(60,40,140,.1); }
 .quote::before { content: "\201C"; position: absolute; top: -14px; left: 24px; font-family: "Instrument Serif", Georgia, serif; font-size: 84px; line-height: 1; color: var(--violet); }
 .quote p { font-size: clamp(14.5px,1.08vw,16px); line-height: 1.65; color: var(--ink); }
 .quote cite { display: block; margin-top: 18px; font-style: normal; font-weight: 600; font-size: 15px; color: var(--title); }
 .quote cite span { display: block; margin-top: 2px; font-weight: 400; font-size: 13.5px; color: var(--muted); }
-.qnote { margin-top: 16px; font-size: 12.5px; color: var(--muted); }
+.qnav { display: flex; align-items: center; gap: 16px; }
+.qbtn { width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--title); color: var(--title); display: grid; place-items: center; transition: background .3s, color .3s, opacity .3s; }
+.qbtn svg { width: 11px; height: 11px; }
+.qbtn:hover:not(:disabled) { background: var(--title); color: #fff; }
+.qbtn:disabled { opacity: .3; cursor: default; }
+.qdots { display: flex; gap: 8px; }
+.qdots button { width: 9px; height: 9px; border-radius: 99px; background: rgba(58,31,166,.25); transition: width .3s, background .3s; }
+.qdots button[aria-current="true"] { width: 24px; background: var(--title); }
 
 /* 05 · prices (flower right) */
 .s3 { background: linear-gradient(180deg, #e9e5fb 0%, #e7e3fb 100%); z-index: 1; height: auto; padding-bottom: 16vh; }
@@ -373,17 +383,27 @@ section { position: relative; min-height: 100vh; height: 100vh; overflow: hidden
     <div class="text">
       <div class="num reveal" aria-hidden="true">04</div>
       <h2 class="title reveal d1" data-k="rt">Was meine<br>Kunden sagen</h2>
-      <div class="quotes">
-        <blockquote class="quote reveal d2">
-          <p data-k="q1">Mit der Erstellung meiner Website war ich rundum zufrieden. Die ganze Zusammenarbeit war professionell, die Kommunikation hervorragend, und alle meine Wünsche wurden bereitwillig angehört und umgesetzt. Ich schätze Michaelas Kreativität, ihre Präzision, ihre Hilfsbereitschaft und ihr Gespür für Details. Die fertige Website wirkt modern, professionell und genau so, wie ich sie mir vorgestellt habe. Dafür bin ich sehr dankbar. Sie hat ihr Herz hineingesteckt.</p>
-          <cite>Milan Varchol<span data-k="q1r">Massage</span></cite>
-        </blockquote>
-        <blockquote class="quote reveal d3">
-          <p data-k="q2">Danke für die super Zusammenarbeit: hervorragende Kommunikation, ein professionelles Vorgehen und Begleitung während des ganzen Projekts, alles auf hohem Niveau. Immer pünktlich und bereit, auf alle Fragen einzugehen. Eine wahre Fundgrube an kreativen Ideen. Die Website hat meine Erwartungen übertroffen. Michaela hat sich nicht nur um die Website gekümmert, sondern auch um Domain, Hosting, E-Mail, das Design des Flyers, die Visitenkarten und das Google-Konto. Ich musste mich um nichts kümmern. Ich kann Michaela allen empfehlen, die ihre Online-Projekte in gute Hände geben möchten.</p>
-          <cite>Jozef Gvozdjak</cite>
-        </blockquote>
+      <div class="slider reveal d2">
+        <div class="quotes" id="quotes" tabindex="0" role="region" aria-label="Kundenstimmen" data-karia="qaria">
+          <blockquote class="quote">
+            <p data-k="q1">Mit der Erstellung meiner Website war ich rundum zufrieden. Die ganze Zusammenarbeit war professionell, die Kommunikation hervorragend, und alle meine Wünsche wurden bereitwillig angehört und umgesetzt. Ich schätze Michaelas Kreativität, ihre Präzision, ihre Hilfsbereitschaft und ihr Gespür für Details. Die fertige Website wirkt modern, professionell und genau so, wie ich sie mir vorgestellt habe. Dafür bin ich sehr dankbar. Sie hat ihr Herz hineingesteckt.</p>
+            <cite>Milan Varchol<span data-k="q1r">Massage</span></cite>
+          </blockquote>
+          <blockquote class="quote">
+            <p data-k="q3">Michaela hat zwei Websites für mich gemacht, und jede hat meine Erwartungen übertroffen. Alle meine Freunde und meine Familie haben gefragt, wer die Website für meine Online-Shops gemacht hat. Die Zusammenarbeit war sehr professionell, freundlich und voller kreativer Ideen. Ich kann Michaela als erste Adresse für jedes Webdesign wärmstens empfehlen.</p>
+            <cite>Radka<span data-k="q3r">Zwei Online-Shops</span></cite>
+          </blockquote>
+          <blockquote class="quote">
+            <p data-k="q2">Danke für die super Zusammenarbeit: hervorragende Kommunikation, ein professionelles Vorgehen und Begleitung während des ganzen Projekts, alles auf hohem Niveau. Immer pünktlich und bereit, auf alle Fragen einzugehen. Eine wahre Fundgrube an kreativen Ideen. Die Website hat meine Erwartungen übertroffen. Michaela hat sich nicht nur um die Website gekümmert, sondern auch um Domain, Hosting, E-Mail, das Design des Flyers, die Visitenkarten und das Google-Konto. Ich musste mich um nichts kümmern. Ich kann Michaela allen empfehlen, die ihre Online-Projekte in gute Hände geben möchten.</p>
+            <cite>Jozef Gvozdjak</cite>
+          </blockquote>
+        </div>
+        <div class="qnav">
+          <button class="qbtn" type="button" data-dir="-1" aria-label="Vorherige Bewertung" data-karia="qprev"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M7 1L3 5l4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
+          <div class="qdots"></div>
+          <button class="qbtn" type="button" data-dir="1" aria-label="Nächste Bewertung" data-karia="qnext"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M3 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
+        </div>
       </div>
-      <p class="qnote reveal d4" data-k="qn">Übersetzt aus dem Original.</p>
     </div>
   </section>
 
@@ -553,6 +573,25 @@ section { position: relative; min-height: 100vh; height: 100vh; overflow: hidden
   // Launch prices switch to regular prices on 1 December 2026, Zurich time
   if (Date.now() >= Date.parse('2026-12-01T00:00:00+01:00')) document.getElementById('prices').classList.add('after');
 
+  // ---------- Review slider: swipe, arrows, dots and arrow keys ----------
+  const qBox = document.getElementById('quotes');
+  const qCards = [...qBox.children];
+  const qWrap = qBox.parentElement.querySelector('.qdots');
+  let dotLabel = 'Bewertung';
+  const qDots = qCards.map((c, i) => { const d = document.createElement('button'); d.type = 'button'; d.setAttribute('aria-label', dotLabel + ' ' + (i + 1)); d.addEventListener('click', () => qGo(i)); qWrap.appendChild(d); return d; });
+  const [qPrev, qNext] = qBox.parentElement.querySelectorAll('.qbtn');
+  const qStep = () => qCards.length > 1 ? qCards[1].offsetLeft - qCards[0].offsetLeft : qBox.clientWidth;
+  const qIdx = () => Math.round(qBox.scrollLeft / qStep());
+  const qGo = i => { i = Math.max(0, Math.min(qCards.length - 1, i)); qBox.scrollTo({ left: i * qStep() }); };
+  const qSync = () => { const i = Math.max(0, Math.min(qCards.length - 1, qIdx())); qBox.style.height = (qCards[i].offsetHeight + 56) + 'px'; qDots.forEach((d, k) => d.setAttribute('aria-current', String(k === i))); qPrev.disabled = i === 0; qNext.disabled = i === qCards.length - 1; };
+  qPrev.addEventListener('click', () => qGo(qIdx() - 1));
+  qNext.addEventListener('click', () => qGo(qIdx() + 1));
+  qBox.addEventListener('keydown', e => { if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') { e.preventDefault(); qGo(qIdx() + (e.key === 'ArrowRight' ? 1 : -1)); } });
+  qBox.addEventListener('scroll', qSync, { passive: true });
+  addEventListener('resize', qSync);
+  addEventListener('load', qSync);
+  qSync();
+
   // ---------- Languages: German is written in the page, English comes from this list ----------
   const EN = {
     title: 'Simsalabit | Websites with a bit of magic',
@@ -587,7 +626,8 @@ section { position: relative; min-height: 100vh; height: 100vh; overflow: hidden
     q1: 'I was completely satisfied with how my website was made. The whole collaboration was professional, the communication was excellent, and every request I had was listened to willingly and built in. I appreciate Michaela’s creativity, precision, helpfulness and feel for detail. The finished website looks modern, professional and exactly the way I imagined it, and I’m very grateful for that. She put her heart into it.',
     q1r: 'Massage',
     q2: 'Thank you for a great collaboration: excellent communication, a professional approach and guidance throughout the whole project, all at a very high level. Always on time and ready to answer every question. A real treasure chest of creative ideas. The website exceeded my expectations. Michaela took care of not just the website but also the domain, hosting, email, the flyer design, business cards and the Google account. I didn’t have to worry about anything. I can recommend Michaela to anyone who needs their online projects in good hands.',
-    qn: 'Translated from the original.',
+    q3: 'Michaela has made two websites for me, and each one exceeded my expectations. All my friends and family asked me who made the websites for my online shops. The cooperation was very professional, friendly and full of creative ideas. I can highly recommend Michaela as the go-to person for any web design.',
+    q3r: 'Two online shops', qaria: 'Client reviews', qprev: 'Previous review', qnext: 'Next review', qdot: 'Review',
     bfs: 'magic prices',
     pt: 'Pick your<br>spell',
     pbf: '<strong>Black Friday launch prices</strong> for projects booked by 30 November 2026. Regular prices apply from 1 December.',
@@ -613,6 +653,8 @@ section { position: relative; min-height: 100vh; height: 100vh; overflow: hidden
   nodes.forEach(n => { n._de = n.innerHTML; });
   const alts = [...document.querySelectorAll('[data-kalt]')];
   alts.forEach(n => { n._de = n.alt; });
+  const arias = [...document.querySelectorAll('[data-karia]')];
+  arias.forEach(n => { n._de = n.getAttribute('aria-label'); });
   const meta = document.querySelector('meta[name="description"]');
   const DE = { title: document.title, desc: meta.content };
   const btns = [...document.querySelectorAll('.lang button')];
@@ -621,6 +663,8 @@ section { position: relative; min-height: 100vh; height: 100vh; overflow: hidden
     document.documentElement.lang = en ? 'en' : 'de';
     nodes.forEach(n => { const v = en ? EN[n.dataset.k] : n._de; if (v != null) n.innerHTML = v; });
     alts.forEach(n => { n.alt = en ? (EN[n.dataset.kalt] || n._de) : n._de; });
+    arias.forEach(n => { n.setAttribute('aria-label', en ? (EN[n.dataset.karia] || n._de) : n._de); });
+    dotLabel = en ? EN.qdot : 'Bewertung'; qDots.forEach((d, i) => d.setAttribute('aria-label', dotLabel + ' ' + (i + 1)));
     document.title = en ? EN.title : DE.title;
     meta.content = en ? EN.desc : DE.desc;
     btns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === l)));
