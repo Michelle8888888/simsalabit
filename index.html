@@ -113,22 +113,22 @@ main { overflow-x: clip; }
 .vals span { display: block; margin-top: 3px; font-size: 14.5px; line-height: 1.55; color: var(--muted); }
 
 /* 01 · services (flower right) */
-.s1 { background: linear-gradient(180deg, #e4e0fa 0%, #ece9fc 100%); z-index: 2; height: auto; }
+.s1 { background: linear-gradient(180deg, #e4e0fa 0%, #ece9fc 100%); z-index: 2; height: auto; min-height: 0; }
 .s1 .flower--hang { width: clamp(380px,46vw,820px); right: -9vw; top: -14vw; transform-origin: 50% 0%; }
 .s1 .bp { left: 50%; top: 70%; }
 .s1 .title { margin-top: 22px; }
-.s1 .text { position: relative; z-index: 2; margin-left: 8vw; padding: 12vh 0 7vh; width: min(520px,44vw); }
+.s1 .text { position: relative; z-index: 2; margin-left: 8vw; padding: 12vh 0 13.4vh; width: min(520px,44vw); }
 .svc { list-style: none; margin-top: 30px; display: grid; gap: 13px; }
 .svc li { display: flex; gap: 12px; font-size: clamp(14px,1.05vw,16px); line-height: 1.45; font-weight: 500; }
 .for { margin-top: 28px; font-size: 13.5px; line-height: 1.55; color: var(--muted); }
 
 /* 02 · how I work (dark, flower left) */
-.s2 { background: #3a1f8c url("https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261017_132814_c3d2b090-c27d-49d1-8107-66d0cfa216c2.png") center/cover no-repeat; color: #fff; z-index: 3; height: auto; }
+.s2 { background: #3a1f8c url("https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261017_132814_c3d2b090-c27d-49d1-8107-66d0cfa216c2.png") center/cover no-repeat; color: #fff; z-index: 3; height: auto; min-height: 95.5vh; }
 .s2::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(25,10,70,.6) 0%, rgba(25,10,70,0) 62%); }
 .s2 .num { color: var(--num-dark); position: relative; }
 .s2 .title { margin-top: 22px; color: #fff; }
 .s2 .copy { color: rgba(240,234,255,.82); }
-.s2 .text { position: relative; z-index: 2; margin-left: 8vw; padding: 9vh 0 16vh; width: min(520px,44vw); }
+.s2 .text { position: relative; z-index: 2; margin-left: 8vw; padding: 9vh 0 12.8vh; width: min(520px,44vw); }
 .s2 .vals .star { fill: var(--violet-lt); }
 .s2 .vals span { color: rgba(240,234,255,.78); }
 .s2 .flower--iris { width: clamp(320px,36vw,640px); right: -8vw; top: -6vw; transform-origin: 60% 20%; filter: drop-shadow(0 40px 60px rgba(20,0,60,.45)); z-index: 1; }
@@ -299,8 +299,8 @@ main { overflow-x: clip; }
   .hero__side { top: 57vh; width: 86vw; }
   .bee-spot { top: 44vh; }
   .hero .flower--cosmos { width: 96vw; left: -30vw; bottom: -24vw; }
-  .s1 .text { margin: 0; width: auto; padding: 20vh 18px 6vh; }
-  .s2 .text { margin: 0; width: auto; padding: 8vh 18px 14vh; }
+  .s1 .text { margin: 0; width: auto; padding: 20vh 18px 8.6vh; }
+  .s2 .text { margin: 0; width: auto; padding: 8vh 18px 11.2vh; }
   .s2 .flower--iris { width: 60vw; right: -16vw; top: -8vw; }
   .sa { grid-template-columns: minmax(0,1fr); gap: 44px; padding: 28vh 18px 9vh; }
   .sa .flower--passion { width: 58vw; left: -16vw; top: -1vh; }
