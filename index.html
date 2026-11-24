@@ -398,7 +398,6 @@ main { overflow-x: clip; }
       <div class="num reveal" aria-hidden="true">03</div>
       <h2 class="title reveal d1" data-k="at">Hallo, ich bin<br>Michaela</h2>
       <p class="lead reveal d2" data-k="al">KI ist mein Zauberstab. Mein Handwerk ist, zu wissen, welcher Zauber passt.</p>
-      <p class="copy reveal d2" data-k="av">Drei Werte leiten jede Website, die ich baue:</p>
       <ul class="vals">
         <li class="reveal d2"><svg class="star"><use href="#st"/></svg><div><b data-k="v1">Freiheit</b><span data-k="v1t">Ihre Website soll Ihnen Zeit zurückgeben. Online-Buchung und klare Informationen bedeuten weniger Anrufe und mehr Zeit für Ihr Handwerk.</span></div></li>
         <li class="reveal d3"><svg class="star"><use href="#st"/></svg><div><b data-k="v2">Integrität</b><span data-k="v2t">Klare Preise, ehrliche Versprechen und nur echte Bewertungen. Was wir vereinbaren, bekommen Sie.</span></div></li>
@@ -661,7 +660,6 @@ main { overflow-x: clip; }
     w4: 'Simple payment', w4t: '80% when you book, 20% when your website is handed over.',
     at: 'Hi, I’m<br>Michaela',
     al: 'AI is my wand. Knowing which spell to cast is my craft.',
-    av: 'Three values guide every website I make:',
     v1: 'Freedom', v1t: 'Your website should give you time back. Online booking and clear information mean fewer calls and more time for your craft.',
     v2: 'Integrity', v2t: 'Clear prices, honest promises and real reviews only. What we agree is what you get.',
     v3: 'Originality', v3t: 'Your business has its own magic. Your website should show it, not look like everyone else’s.',
@@ -772,6 +770,14 @@ main { overflow-x: clip; }
     pTarget = cl((H * 1.0 - reviews.getBoundingClientRect().top) / (H * 1.05));
     if (!pRaf) pRaf = requestAnimationFrame(pnyStep);
   };
+  // the space under the services list (01) is kept the same as the space under the four promises (02)
+  const s1t = document.querySelector('#services .text'), s2 = document.getElementById('how'), s2t = s2.querySelector('.text'), s2last = s2.querySelector('.vals li:last-child');
+  const matchGap = () => {
+    const gap2 = s2.clientHeight - (s2t.offsetTop + s2last.offsetTop + s2last.offsetHeight);
+    if (gap2 > 0) s1t.style.paddingBottom = Math.round(gap2) + 'px';
+  };
+  matchGap(); addEventListener('resize', matchGap); addEventListener('load', matchGap);
+  if (document.fonts) document.fonts.ready.then(matchGap);
   addEventListener('scroll', onScroll, { passive: true });
   addEventListener('resize', onScroll);
   onScroll();
@@ -808,7 +814,7 @@ const lerpAngle = (a, b, t) => { const d = ((b - a + 540) % 360) - 180; return a
 // then the price cards Spark (left), Spell (right), Grand illusion (left on phones), and the footer flower.
 const STOPS = [
   { sel: '#top .bee-spot', big: 1 },
-  { sel: '#top .flower', big: 1 },
+  { sel: '#top .flower', big: .8 },
   { sel: '#services .flower' },
   { sel: '#services .perch', hover: 1 },
   { sel: '#how .flower' },
@@ -823,7 +829,7 @@ const STOPS = [
 ].map(o => {
   const el = document.querySelector(o.sel); if (!el) return null;
   const fl = el.classList.contains('flower') ? el : null;
-  return { fl, sec: el.closest('section'), bp: fl ? fl.querySelector('.bp') : el, centre: el.classList.contains('bee-spot'), big: !!o.big, hover: !!o.hover, card: o.card, lift: o.card != null ? .1 : o.hover ? 0 : .03, img: fl && (fl.querySelector('img[data-bloom]') || fl.querySelector('img')), auto: !fl };
+  return { fl, sec: el.closest('section'), bp: fl ? fl.querySelector('.bp') : el, centre: el.classList.contains('bee-spot'), big: o.big || 0, hover: !!o.hover, card: o.card, lift: o.card != null ? .1 : o.hover ? 0 : .03, img: fl && (fl.querySelector('img[data-bloom]') || fl.querySelector('img')), auto: !fl };
 }).filter(s => s && s.bp);
 function findBloom(img) {
   const W = 128, H = Math.max(8, Math.round(128 * img.naturalHeight / img.naturalWidth)), N = W * H;
@@ -980,7 +986,7 @@ function pose(s) {
   const W = innerWidth, H = innerHeight, mob = W < 760, p = bloomPx(s);
   const side = s.centre ? 'C' : p.x < W / 2 ? 'L' : 'R';
   // 30% bigger in the hero, normal size from the services section on
-  const sc = s.big ? (mob ? .72 : .8) : side === 'C' ? (mob ? .55 : .62) : (mob ? .45 : .55);
+  const sc = s.big ? (mob ? .72 : .8) * s.big : side === 'C' ? (mob ? .55 : .62) : (mob ? .45 : .55);
   // land in the middle of the flower (or sit on the top edge of a price card), but never leave the screen
   const x = clamp(p.x / W * 2 - 1, -.86, .86), y = clamp(-(p.y / H * 2 - 1) + (side === 'C' ? 0 : s.lift * sc), -.8, .68);
   const yaw = side === 'C' ? 120 : side === 'L' ? 35 : 145;
