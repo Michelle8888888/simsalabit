@@ -91,6 +91,7 @@ main { overflow-x: clip; }
 .join:hover i { transform: translateX(4px); }
 .hero .flower--cosmos { width: clamp(420px,64vw,1100px); left: -14vw; bottom: -24vw; transform-origin: 60% 40%; filter: drop-shadow(0 30px 40px rgba(80,50,160,.18)); z-index: 1; }
 .hero .bp { left: 50%; top: 38%; }
+.hero .flower--cosmos .fl-in { transform: scaleX(-1); }
 /* soft hand-over from the hero into section 01: the hero picture fades into the colour where 01 begins,
    and the stem of the hanging flower fades in instead of starting at a hard edge */
 .hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 16vh; background: linear-gradient(180deg, rgba(228,224,250,0) 0%, rgba(228,224,250,.75) 60%, #e4e0fa 100%); pointer-events: none; z-index: 0; }
@@ -111,7 +112,9 @@ main { overflow-x: clip; }
 
 /* 01 · services (flower right) */
 .s1 { background: linear-gradient(180deg, #e4e0fa 0%, #ece9fc 100%); z-index: 2; height: auto; min-height: 0; }
-.s1 .flower--hang { width: clamp(380px,46vw,820px); right: -9vw; top: -14vw; transform-origin: 50% 0%; }
+/* 01: the flower stands upright and leans in from the right edge (stem hidden behind the edge), a bit lower than before */
+.s1 .flower--hang { --hw: clamp(380px,46vw,820px); width: var(--hw); right: calc(var(--hw) * -.32); top: calc(-14vw + var(--hw) * .5); transform-origin: 50% 50%; }
+.s1 .flower--hang .fl-in { transform: rotate(-38deg) scaleY(-1); }
 .s1 .bp { left: 50%; top: 70%; }
 .s1 .title { margin-top: 22px; }
 .s1 .text { position: relative; z-index: 2; margin-left: 8vw; padding: 12vh 0 13.4vh; width: min(520px,44vw); }
@@ -273,7 +276,7 @@ main { overflow-x: clip; }
   .svc li { gap: 14px; padding: 22px 22px 26px; font-size: clamp(15px,1.15vw,17.5px); line-height: 1.42; }
   .svc .star { width: 38px; height: 38px; padding: 11px; }
   .for { max-width: 760px; margin: 32px auto 0; }
-  .s1 .flower--hang { width: clamp(340px,36vw,660px); right: -7vw; }
+  .s1 .flower--hang { --hw: clamp(340px,36vw,660px); }
   /* 02: the four promises in a 2 by 2 grid */
   .s2::before { background: radial-gradient(ellipse 75% 85% at 50% 45%, rgba(25,10,70,.58) 0%, rgba(25,10,70,.18) 100%); }
   .s2 .vals { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 18px; margin-top: 44px; text-align: left; }
@@ -305,7 +308,7 @@ main { overflow-x: clip; }
   .s1 .text { margin: 0; width: auto; padding: 20vh 18px 8.6vh; }
   .s2 .text { margin: 0; width: auto; padding: 8vh 18px 11.2vh; }
   .s2 .flower--iris { width: 60vw; right: -16vw; top: -8vw; }
-  .s2 .flower--wis { --w0: 34vw; left: calc(-2.04vw - 34vw * .484 * var(--wk)); top: calc(100% - 9vh); }
+  .s2 .flower--wis { --w0: 34vw; --wk: 2.25; left: calc(-2.04vw - 34vw * .484 * var(--wk)); top: calc(100% - 9vh); }
   .sa { grid-template-columns: minmax(0,1fr); gap: 44px; padding: 28vh 18px 9vh; }
   .sa-vis { justify-self: center; width: 80vw; max-width: 420px; }
   .sa .flower--cosmos2 { width: 58%; right: -22%; bottom: -30%; }
