@@ -135,7 +135,7 @@ main { overflow-x: clip; }
 /* the whole wisteria (both strands) comes in from the left at the bottom of 02 and reaches into the top of 03;
    02 lets it hang out at the bottom only (the iris stays cut off at the top as before) */
 .s2 { overflow: visible; clip-path: inset(0 0 -70vh 0); }
-.s2 .flower--wis { width: min(19vw, 28vh); left: calc(min(19vw, 28vh) * -.61); top: calc(100% - min(19vw, 28vh) * .44); z-index: 1; }
+.s2 .flower--wis { --wk: 1.5; --w0: min(19vw, 28vh); width: calc(var(--w0) * var(--wk)); left: calc(var(--w0) * (-.126 - .484 * var(--wk))); top: calc(100% - var(--w0) * .44); z-index: 1; }
 .s2 .flower--wis .fl-in { transform-origin: 48.4% 0; transform: rotate(-66deg); filter: drop-shadow(0 24px 30px rgba(20,0,60,.35)); }
 .s2 .flower--wis .bp { left: 50%; top: 28%; }
 
@@ -305,7 +305,7 @@ main { overflow-x: clip; }
   .s1 .text { margin: 0; width: auto; padding: 20vh 18px 8.6vh; }
   .s2 .text { margin: 0; width: auto; padding: 8vh 18px 11.2vh; }
   .s2 .flower--iris { width: 60vw; right: -16vw; top: -8vw; }
-  .s2 .flower--wis { width: 34vw; left: -18.5vw; top: calc(100% - 9vh); }
+  .s2 .flower--wis { --w0: 34vw; left: calc(-2.04vw - 34vw * .484 * var(--wk)); top: calc(100% - 9vh); }
   .sa { grid-template-columns: minmax(0,1fr); gap: 44px; padding: 28vh 18px 9vh; }
   .sa-vis { justify-self: center; width: 80vw; max-width: 420px; }
   .sa .flower--cosmos2 { width: 58%; right: -22%; bottom: -30%; }
