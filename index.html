@@ -333,7 +333,7 @@ body.kf-open { overflow: hidden; }
 .legal { position: fixed; inset: 0; z-index: 70; overflow-y: auto; background: rgba(231,227,251,.97); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
 .legal[hidden] { display: none; }
 .legal__in { position: relative; max-width: 760px; margin: 0 auto; padding: 96px 24px 80px; }
-.legal__x { position: fixed; top: 18px; right: var(--pad); width: 44px; height: 44px; border-radius: 50%; background: var(--title); color: #fff; font-size: 24px; line-height: 1; }
+.legal__x { position: fixed; top: 18px; right: var(--pad); z-index: 2; width: 44px; height: 44px; border-radius: 50%; background: var(--title); color: #fff; font-size: 24px; line-height: 1; }
 .legal article[hidden] { display: none; }
 .legal h2 { font-size: clamp(30px,3.4vw,48px); font-weight: 700; letter-spacing: -.02em; color: var(--title); }
 .legal h3 { margin-top: 30px; font-size: 18px; font-weight: 600; color: var(--title); }
@@ -625,7 +625,7 @@ body.kf-open { overflow: hidden; }
 </main>
 
 
-<div class="legal" id="legal" hidden role="dialog" aria-modal="true" aria-label="Impressum und Datenschutz">
+<div class="legal" id="legal" hidden role="dialog" aria-modal="true" aria-label="Impressum und Datenschutz" data-karia="legal">
   <button class="legal__x" type="button" aria-label="Schliessen / Close">×</button>
   <div class="legal__in">
     <p class="legal__note" data-k="lnote"></p>
@@ -646,28 +646,72 @@ body.kf-open { overflow: hidden; }
       <h2>Datenschutzerklärung</h2>
       <p class="stand">Stand: 25. November 2026</p>
       <h3>1. Verantwortliche Stelle</h3>
-      <p>Verantwortlich für die Bearbeitung Ihrer Personendaten ist:<br>Simsalabit, Inhaberin Michaela Olsova<br>Albisriederstrasse 90, 8003 Zürich, Schweiz<br>E-Mail: <a href="mailto:magic@simsalabit.ch">magic@simsalabit.ch</a>, Telefon: +41 76 642 91 05</p>
+      <p>Verantwortlich für die Bearbeitung Ihrer Personendaten ist:</p>
+      <p>Simsalabit<br>Inhaberin: Michaela Olsova<br>Albisriederstrasse 90<br>8003 Zürich<br>Schweiz</p>
+      <p>E-Mail: <a href="mailto:magic@simsalabit.ch">magic@simsalabit.ch</a><br>Telefon: +41 76 642 91 05</p>
       <h3>2. Worum es geht</h3>
       <p>Diese Datenschutzerklärung erklärt, welche Personendaten ich beim Besuch dieser Webseite und bei Ihrer Kontaktaufnahme bearbeite, wozu ich sie bearbeite und an wen sie gehen. Sie richtet sich nach dem Schweizer Bundesgesetz über den Datenschutz (DSG). Soweit für Besucherinnen und Besucher aus der EU die Datenschutz-Grundverordnung (DSGVO) gilt, gelten diese Angaben sinngemäss auch dafür.</p>
       <h3>3. Besuch dieser Webseite</h3>
-      <p>Beim Aufruf der Webseite bearbeitet mein Hosting-Anbieter automatisch technische Daten: Ihre IP-Adresse, Datum und Uhrzeit des Zugriffs, die aufgerufene Seite, die zuvor besuchte Seite sowie Browser und Betriebssystem. Diese Daten sind nötig, um die Webseite auszuliefern, sie sicher zu betreiben und Störungen zu beheben. Ich führe sie nicht mit anderen Daten zusammen. Hosting-Anbieter: Netlify, Inc., USA.</p>
+      <p>Beim Aufruf der Webseite bearbeitet mein Hosting-Anbieter automatisch technische Daten: Ihre IP-Adresse, Datum und Uhrzeit des Zugriffs, die aufgerufene Seite, die zuvor besuchte Seite sowie Browser und Betriebssystem. Diese Daten sind nötig, um die Webseite auszuliefern, sie sicher zu betreiben und Störungen zu beheben. Ich führe sie nicht mit anderen Daten zusammen. Hosting-Anbieter: Infomaniak Network SA, Schweiz.</p>
       <h3>4. Schriften und Inhalte</h3>
       <p>Alle Schriften, Bilder und Programmteile dieser Webseite liegen bei meinem Hosting-Anbieter. Ihr Browser lädt keine Inhalte von anderen Anbietern wie Google. Ihre IP-Adresse wird deshalb nicht an solche Anbieter übermittelt.</p>
       <h3>5. Kontaktformular und Kontaktaufnahme</h3>
-      <p>Wenn Sie das Kontaktformular ausfüllen, bearbeite ich die Angaben, die Sie eintragen: Name, E-Mail-Adresse, Telefonnummer, Adresse, das gewünschte Paket sowie Ihre Beschreibung Ihres Geschäfts und Ihrer Webseite. Nur Name und E-Mail-Adresse sind Pflichtangaben. Die Formulareinträge werden bei meinem Hosting-Anbieter Netlify, Inc. (USA) gespeichert und mir per E-Mail zugestellt. Ich verwende sie nur, um Ihre Anfrage zu beantworten und Ihnen gegebenenfalls ein Angebot zu machen.</p>
+      <p>Wenn Sie das Kontaktformular ausfüllen, bearbeite ich die Angaben, die Sie eintragen: Name, E-Mail-Adresse, Telefonnummer, Adresse, das gewünschte Paket sowie Ihre Beschreibung Ihres Geschäfts und Ihrer Webseite. Nur Name und E-Mail-Adresse sind Pflichtangaben. Die Formulareinträge werden mir per E-Mail an mein Postfach bei Infomaniak (Schweiz) zugestellt. Nur ich lese und bearbeite sie. Ich verwende sie nur, um Ihre Anfrage zu beantworten und Ihnen gegebenenfalls ein Angebot zu machen.</p>
       <p>Wenn Sie mir eine E-Mail schreiben oder mich anrufen, bearbeite ich Ihre Angaben, zum Beispiel Name, E-Mail-Adresse, Telefonnummer und den Inhalt Ihrer Nachricht, um Ihre Anfrage zu beantworten und gegebenenfalls ein Angebot oder einen Auftrag abzuwickeln. Ich gebe diese Daten nicht an Dritte weiter, ausser an Dienstleister, die ich dafür brauche (zum Beispiel meinen E-Mail-Anbieter), oder wenn ich gesetzlich dazu verpflichtet bin.</p>
       <h3>6. Cookies und Tracking</h3>
       <p>Diese Webseite setzt keine Cookies und verwendet keine Analyse- oder Werbedienste. Ihre Sprachwahl (Deutsch oder Englisch) wird nur lokal in Ihrem Browser gespeichert und nicht an mich übermittelt.</p>
       <h3>7. Bekanntgabe ins Ausland</h3>
-      <p>Mein Hosting-Anbieter Netlify hat seinen Sitz in den USA und bearbeitet Daten auf Servern weltweit. Für die Übermittlung in die USA stütze ich mich auf das Swiss-U.S. Data Privacy Framework, soweit der Anbieter danach zertifiziert ist, oder auf Standardvertragsklauseln, die der Eidgenössische Datenschutz- und Öffentlichkeitsbeauftragte (EDÖB) anerkennt.</p>
+      <p>Meine Webseite und mein E-Mail-Postfach liegen bei Infomaniak auf Servern in der Schweiz. Ich gebe Ihre Personendaten nicht ins Ausland bekannt.</p>
       <h3>8. Aufbewahrung</h3>
       <p>Ich bewahre Personendaten nur so lange auf, wie es für den jeweiligen Zweck nötig ist oder das Gesetz es verlangt. Geschäftskorrespondenz und Buchhaltungsunterlagen bewahre ich bis zu zehn Jahre auf.</p>
       <h3>9. Ihre Rechte</h3>
-      <p>Sie können jederzeit Auskunft über Ihre bei mir gespeicherten Daten verlangen, falsche Daten berichtigen und Daten löschen lassen, soweit keine gesetzliche Aufbewahrungspflicht besteht. Sie können der Bearbeitung widersprechen und die Herausgabe Ihrer Daten verlangen. Schreiben Sie mir dafür an <a href="mailto:magic@simsalabit.ch">magic@simsalabit.ch</a>. Ausserdem können Sie sich beim EDÖB beschweren (www.edoeb.admin.ch).</p>
+      <p>Sie können jederzeit Auskunft über Ihre bei mir gespeicherten Daten verlangen, falsche Daten berichtigen und Daten löschen lassen, soweit keine gesetzliche Aufbewahrungspflicht besteht. Sie können der Bearbeitung widersprechen und die Herausgabe Ihrer Daten verlangen. Schreiben Sie mir dafür an <a href="mailto:magic@simsalabit.ch">magic@simsalabit.ch</a>. Ausserdem können Sie sich beim Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten (EDÖB) beschweren (www.edoeb.admin.ch).</p>
       <h3>10. Datensicherheit</h3>
       <p>Diese Webseite wird verschlüsselt über HTTPS übertragen. Ich treffe angemessene technische und organisatorische Massnahmen, um Ihre Daten zu schützen.</p>
       <h3>11. Änderungen</h3>
       <p>Ich kann diese Datenschutzerklärung anpassen, wenn sich die Webseite oder die Rechtslage ändert. Es gilt die jeweils hier veröffentlichte Fassung.</p>
+    </article>
+    <article id="doc-impressum-en" lang="en" hidden>
+      <h2>Legal notice</h2>
+      <h3>Provider of this website</h3>
+      <p>Simsalabit<br>Owner: Michaela Olsova<br>Albisriederstrasse 90<br>8003 Zürich<br>Switzerland</p>
+      <p>Email: <a href="mailto:magic@simsalabit.ch">magic@simsalabit.ch</a><br>Phone: +41 76 642 91 05</p>
+      <h3>Disclaimer</h3>
+      <p>I check the content of this website with care. Nevertheless, I cannot guarantee that it is correct, complete or up to date. Liability for damage arising from access to or use of this website is excluded to the extent permitted by law.</p>
+      <p>The prices on this website are starting prices. The written offer is binding.</p>
+      <h3>Links to other websites</h3>
+      <p>The operators of websites I link to are solely responsible for their content.</p>
+      <h3>Copyright</h3>
+      <p>The texts, images and design of this website belong to Simsalabit or the respective rights holders. Any use requires prior written consent.</p>
+    </article>
+    <article id="doc-datenschutz-en" lang="en" hidden>
+      <h2>Privacy policy</h2>
+      <p class="stand">As of 25 November 2026</p>
+      <h3>1. Controller</h3>
+      <p>The person responsible for processing your personal data is:</p>
+      <p>Simsalabit<br>Owner: Michaela Olsova<br>Albisriederstrasse 90<br>8003 Zürich<br>Switzerland</p>
+      <p>Email: <a href="mailto:magic@simsalabit.ch">magic@simsalabit.ch</a><br>Phone: +41 76 642 91 05</p>
+      <h3>2. What this is about</h3>
+      <p>This privacy policy explains which personal data I process when you visit this website and when you contact me, why I process it and who receives it. It follows the Swiss Federal Act on Data Protection (FADP). Where the EU General Data Protection Regulation (GDPR) applies to visitors from the EU, this information applies accordingly.</p>
+      <h3>3. Visiting this website</h3>
+      <p>When you open the website, my hosting provider automatically processes technical data: your IP address, the date and time of access, the page you open, the page you came from, and your browser and operating system. This data is needed to deliver the website, to run it securely and to fix faults. I do not combine it with other data. Hosting provider: Infomaniak Network SA, Switzerland.</p>
+      <h3>4. Fonts and content</h3>
+      <p>All fonts, images and program files of this website are stored with my hosting provider. Your browser does not load any content from other providers such as Google, so your IP address is not passed on to such providers.</p>
+      <h3>5. Contact form and getting in touch</h3>
+      <p>When you fill in the contact form, I process the details you enter: name, email address, phone number, address, the package you are interested in, and your description of your business and your website. Only your name and email address are required. The form entries are sent to me by email, to my mailbox at Infomaniak (Switzerland). Only I read and process them. I use them only to answer your request and, where relevant, to make you an offer.</p>
+      <p>When you email or call me, I process your details, for example your name, email address, phone number and the content of your message, to answer your request and, where relevant, to handle an offer or an order. I do not pass this data on to third parties, except to service providers I need for this purpose (for example my email provider) or where I am required to do so by law.</p>
+      <h3>6. Cookies and tracking</h3>
+      <p>This website does not set any cookies and does not use any analytics or advertising services. Your language choice (German or English) is only stored locally in your browser and is not sent to me.</p>
+      <h3>7. Disclosure abroad</h3>
+      <p>My website and my mailbox are hosted by Infomaniak on servers in Switzerland. I do not disclose your personal data abroad.</p>
+      <h3>8. Retention</h3>
+      <p>I keep personal data only as long as necessary for the respective purpose or as required by law. I keep business correspondence and accounting records for up to ten years.</p>
+      <h3>9. Your rights</h3>
+      <p>You can request information about the data I hold about you at any time, have incorrect data corrected and have data deleted, unless a legal obligation to keep it applies. You can object to the processing and request a copy of your data. To do so, write to me at <a href="mailto:magic@simsalabit.ch">magic@simsalabit.ch</a>. You can also lodge a complaint with the Federal Data Protection and Information Commissioner (FDPIC, www.edoeb.admin.ch).</p>
+      <h3>10. Data security</h3>
+      <p>This website is transmitted encrypted via HTTPS. I take appropriate technical and organisational measures to protect your data.</p>
+      <h3>11. Changes</h3>
+      <p>I may adapt this privacy policy if the website or the legal situation changes. The version published here applies.</p>
     </article>
   </div>
 </div>
@@ -815,7 +859,7 @@ body.kf-open { overflow: hidden; }
     ft: 'Ready for a little magic?', fj: 'Write me',
     tag1: 'Websites with a bit of magic', tag2: 'Zurich, Switzerland',
     mail: 'Email', call: 'Call', imp: 'Legal notice', dsg: 'Privacy policy',
-    lnote: 'This legal information is available in German only.',
+    legal: 'Legal notice and privacy policy', lnote: 'This is an English translation. If anything is unclear, the German version applies.',
     close: 'Close', kfo: 'Write me', kft: 'Tell me about your project', kfl: 'A few details are enough. I will get back to you personally.',
     kfe: 'Email', kfp: 'Phone', kfa: 'Address', kfap: 'Street, postcode, town', kfk: 'Which package interests you?', kfu: 'Not sure yet',
     kfb: 'Your business: what exactly do you do?', kfbp: 'For example: beauty salon in Winterthur, facials and massages',
@@ -846,6 +890,7 @@ body.kf-open { overflow: hidden; }
     meta.content = en ? EN.desc : DE.desc;
     btns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === l)));
     try { localStorage.setItem('simsalabit-lang', l); } catch (e) {}
+    document.dispatchEvent(new Event('simsa:lang'));
   };
   btns.forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
   let saved = null; try { saved = localStorage.getItem('simsalabit-lang'); } catch (e) {}
@@ -854,14 +899,19 @@ body.kf-open { overflow: hidden; }
   // ---------- Impressum and Datenschutz ----------
   const legal = document.getElementById('legal');
   const docs = { impressum: document.getElementById('doc-impressum'), datenschutz: document.getElementById('doc-datenschutz') };
+  const docsEn = { impressum: document.getElementById('doc-impressum-en'), datenschutz: document.getElementById('doc-datenschutz-en') };
+  let shown = '';
   const route = () => {
     const k = location.hash.slice(1);
-    const open = k in docs;
+    const open = k in docs, en = document.documentElement.lang === 'en';
     legal.hidden = !open;
     document.body.classList.toggle('legal-open', open);
-    for (const d in docs) docs[d].hidden = d !== k;
-    if (open) legal.scrollTop = 0;
+    for (const d in docs) { docs[d].hidden = !(d === k && !en); docsEn[d].hidden = !(d === k && en); }
+    if (open && shown !== k) legal.scrollTop = 0;
+    shown = open ? k : '';
   };
+  // switching the language while a legal text is open shows it in the other language
+  document.addEventListener('simsa:lang', route);
   legal.querySelector('.legal__x').addEventListener('click', () => { history.replaceState(null, '', location.pathname + location.search); route(); });
   addEventListener('keydown', e => { if (e.key === 'Escape' && !legal.hidden) legal.querySelector('.legal__x').click(); });
   addEventListener('hashchange', route);

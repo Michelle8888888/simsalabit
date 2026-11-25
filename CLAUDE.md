@@ -45,6 +45,12 @@ Michelle (Michaela Olsova, writes in English) builds the site of her own web des
 - When the site moves to Infomaniak, Netlify Forms stops working: add a PHP handler there (like the Bedacht site) and point the form at it.
 - No external requests at all: fonts, three.js and pictures are all on the site. Keep it that way (the Datenschutz text says so).
 
+## Impressum and Datenschutz
+- Both exist in German (`#doc-impressum`, `#doc-datenschutz`) and English (`#doc-impressum-en`, `#doc-datenschutz-en`); the open one follows the language switch.
+  The English versions carry the note that the German version applies. Change both languages together.
+- The Datenschutz text already describes the **Infomaniak** setup Michelle decided on (hosting in Switzerland, form requests go only to her Infomaniak mailbox,
+  nothing disclosed abroad, no Netlify). While the site still runs on Netlify, form entries actually go through Netlify Forms, so the move should not wait long.
+
 ## The bee (handle with care)
 - A 3D bee (three.js, GLTFLoader + meshopt) flies from stop to stop as the visitor scrolls. The route is the `STOPS` list in `src/page.html`.
   `findBloom` finds each flower's yellow centre. A still picture (`.bee-ph`) shows immediately and fades out when the 3D bee is ready (`bee-on`).
