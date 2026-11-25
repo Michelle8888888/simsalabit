@@ -2,7 +2,8 @@
 
 Website of Simsalabit, websites with a bit of magic (Zurich).
 
-- `index.html` is the whole site (German default, English switch), `assets/` holds the photo and the peony pictures.
+- `src/page.html` is the source of the whole site (German default, English switch); `python3 src/build.py` builds `index.html` from it.
+  `assets/` holds the pictures, the 3D bee and three.js. See `CLAUDE.md` for the full guide.
 - Live site: https://simsalabit.netlify.app
 
 ## How changes are published (saves Netlify credits)
