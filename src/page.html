@@ -121,6 +121,7 @@ body.bee-on .bee-ph { opacity: 0; animation: none; }
 @media (prefers-reduced-motion: reduce) { .bee-ph { animation: none; } }
 .loaded .hero__side { animation: fade 1s .7s ease forwards; }
 .hero__side p { font-size: clamp(15px,1.45vw,20px); line-height: 1.32; color: var(--muted); font-weight: 400; }
+.hero__side .motto span { display: block; }
 .hero__side .motto { font-family: "Instrument Serif", Georgia, serif; font-style: italic; font-size: clamp(32px,3.8vw,64px); line-height: 1.08; letter-spacing: -.01em; color: #fff; text-wrap: balance; text-shadow: 0 1px 2px rgba(42,21,128,.65), 0 3px 12px rgba(58,31,166,.6), 0 0 36px rgba(91,61,245,.55); }
 @keyframes fade { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
 .join { display: inline-flex; align-items: center; gap: 14px; margin-top: 40px; font-weight: 600; font-size: clamp(15px,1.4vw,19px); }
@@ -388,7 +389,7 @@ body.kf-open { overflow: hidden; }
   .nav { gap: 10px; }
   .logo { font-size: 23px; margin-right: 0; }
   .lang button { min-width: 30px; height: 26px; padding: 0 6px; }
-  .hero h1 { top: 14vh; }
+  .hero h1 { top: 14vh; font-size: clamp(30px, 9.2vw, 36px); }
   .hero__side { top: 57vh; width: 86vw; }
   .bee-spot { top: 44vh; }
   .bee-ph { left: calc(50% - 13.33vh); top: calc(44vh - 7.27vh); width: 24.76vh; }
@@ -444,10 +445,10 @@ body.kf-open { overflow: hidden; }
 
 <main>
   <section class="hero" id="top" data-theme="light">
-    <h1 data-speed="0.55"><span class="line"><span data-k="h1a">Auch ein kleines Geschäft</span></span><span class="line"><span data-k="h1b">verdient eine grosse Show</span></span></h1>
+    <h1 data-speed="0.55"><span class="line"><span data-k="h1a">Webseiten, die Ihr Geschäft</span></span><span class="line"><span data-k="h1b">zum Blühen bringen</span></span></h1>
     <div class="flower flower--cosmos" data-speed="-0.25" data-rot="8" data-side="L"><div class="fl-in"><img src="assets/tpl/c994332b.webp" crossorigin="anonymous" onerror="this.onerror=null;this.removeAttribute('crossorigin');this.src=this.src" alt=""><i class="bp"></i></div></div>
     <div class="hero__side">
-      <p class="motto" data-k="hs">Ich gestalte Webseiten, die in Erinnerung bleiben</p>
+      <p class="motto" data-k="hs"><span>Ich gestalte Webseiten, die in Erinnerung bleiben,</span> <span>damit Sie als fleissige Biene mehr Nektar sammeln</span></p>
     </div>
     <i class="bee-spot" aria-hidden="true"></i>
     <img class="bee-ph" src="__BEEPH__" alt="" aria-hidden="true">
@@ -457,7 +458,7 @@ body.kf-open { overflow: hidden; }
     <div class="flower flower--hang" data-speed="0.35" data-rot="6" data-side="R"><div class="fl-in"><img loading="lazy" decoding="async" class="mir" src="assets/tpl/764b726d.webp" crossorigin="anonymous" onerror="this.onerror=null;this.removeAttribute('crossorigin');this.src=this.src" alt=""><i class="bp"></i></div></div>
     <div class="text">
       <div class="num reveal" aria-hidden="true">01</div>
-      <h2 class="title reveal d1" data-k="s1t">Alles, was Ihr <br>Geschäft online <br>braucht</h2>
+      <h2 class="title reveal d1" data-k="s1t">Alles, was Ihr <br>Geschäft zum <br>Blühen bringt</h2>
       <ul class="svc reveal d3">
         <li><svg class="star"><use href="#st"/></svg><span data-k="sv1">Eine Webseite mit Bewegungseffekten, von einer bis acht Seiten</span></li>
         <li><svg class="star"><use href="#st"/></svg><span data-k="sv2">Online-Buchung oder ein WhatsApp-Buchungsknopf</span></li>
@@ -491,7 +492,7 @@ body.kf-open { overflow: hidden; }
       <h2 class="title reveal d1" data-k="at">Hallo, ich bin<br>Michaela</h2>
       <p class="lead reveal d2" data-k="al">KI ist mein Zauberstab. Mein Handwerk ist, zu wissen, welcher Zauber passt.</p>
       <ul class="vals">
-        <li class="reveal d2"><svg class="star"><use href="#st"/></svg><div><b data-k="v1">Freiheit</b><span data-k="v1t">Ihre Webseite soll Ihnen Zeit zurückgeben. Online-Buchung und klare Informationen bedeuten weniger Anrufe und mehr Zeit für Ihr Handwerk.</span></div></li>
+        <li class="reveal d2"><svg class="star"><use href="#st"/></svg><div><b data-k="v1">Freiheit</b><span data-k="v1t">Sie sind die fleissige Biene in Ihrem Geschäft. Ihre Webseite soll Ihnen Zeit zurückgeben. Online-Buchung und klare Informationen bedeuten weniger Anrufe und mehr Zeit für Ihr Handwerk.</span></div></li>
         <li class="reveal d3"><svg class="star"><use href="#st"/></svg><div><b data-k="v2">Integrität</b><span data-k="v2t">Klare Preise, ehrliche Versprechen und nur echte Bewertungen. Was wir vereinbaren, bekommen Sie.</span></div></li>
         <li class="reveal d3"><svg class="star"><use href="#st"/></svg><div><b data-k="v3">Originalität</b><span data-k="v3t">Ihr Geschäft hat seine eigene Magie. Ihre Webseite soll sie zeigen, statt auszusehen wie alle anderen.</span></div></li>
       </ul>
@@ -611,7 +612,7 @@ body.kf-open { overflow: hidden; }
   <section class="foot" id="contact" data-theme="light">
     <div class="flower flower--up" data-speed="-0.45" data-rot="0" data-side="L"><div class="fl-in"><img loading="lazy" decoding="async" src="assets/tpl/c994332b.webp" crossorigin="anonymous" onerror="this.onerror=null;this.removeAttribute('crossorigin');this.src=this.src" alt=""><i class="bp"></i></div></div>
     <div class="cta">
-      <h2 class="title reveal" data-k="ft">Bereit für ein bisschen Magie?</h2>
+      <h2 class="title reveal" data-k="ft">Bereit, mehr Nektar zu sammeln?</h2>
       <a class="btn-lilac reveal d2" href="#anfrage" data-form=""><svg viewBox="0 0 40 40" aria-hidden="true"><use href="#spark"/></svg><span data-k="fj">Schreiben Sie mir</span></a>
     </div>
     <div class="fbottom">
@@ -817,9 +818,9 @@ body.kf-open { overflow: hidden; }
     title: 'Simsalabit | Websites with a bit of magic',
     desc: 'Websites with a bit of magic for small businesses. Designed, written and live in one to four weeks.',
     n1b: 'Services', n2b: 'About', n3b: 'Reviews', n4b: 'Prices',
-    h1a: 'Even a small business', h1b: 'deserves a big show',
-    hs: 'I create websites that people remember',
-    s1t: 'Everything your <br>business needs <br>online',
+    h1a: 'Websites that make', h1b: 'your business flourish',
+    hs: '<span>I create websites that people remember,</span> <span>so busy bees like you collect more nectar</span>',
+    s1t: 'Everything that <br>makes your business <br>flourish',
     sv1: 'A website with motion effects, from one page to eight', sv2: 'Online booking, or a WhatsApp booking button',
     sv3: 'Texts written for you, in German, English and French', sv4: 'Google Business Profile and Search Console set up',
     sv5: 'Logo, business cards or a full brand identity', sv6: 'An Instagram plan with 30 post designs',
@@ -830,7 +831,7 @@ body.kf-open { overflow: hidden; }
     w4: 'Simple payment', w4t: '80% when you book, 20% when your website is handed over.',
     at: 'Hi, I’m<br>Michaela',
     al: 'AI is my wand. Knowing which spell to cast is my craft.',
-    v1: 'Freedom', v1t: 'Your website should give you time back. Online booking and clear information mean fewer calls and more time for your craft.',
+    v1: 'Freedom', v1t: 'You are the busy bee in your business. Your website should give you time back. Online booking and clear information mean fewer calls and more time for your craft.',
     v2: 'Integrity', v2t: 'Clear prices, honest promises and real reviews only. What we agree is what you get.',
     v3: 'Originality', v3t: 'Your business has its own magic. Your website should show it, not look like everyone else’s.',
     atr: 'Magic looks easy. That’s the whole trick.',
@@ -856,7 +857,7 @@ body.kf-open { overflow: hidden; }
     n5: '<strong>Care plan</strong> from CHF 90 a month: hosting, updates and small changes.',
     n7: '<strong>Payment 80/20:</strong> you pay 80% when you book and 20% when the finished project is delivered.',
     n6: 'All prices are starting prices in CHF. Printing, and the fees of booking or payment tools, are paid directly to their providers.',
-    ft: 'Ready for a little magic?', fj: 'Write me',
+    ft: 'Ready to collect more nectar?', fj: 'Write me',
     tag1: 'Websites with a bit of magic', tag2: 'Zurich, Switzerland',
     mail: 'Email', call: 'Call', imp: 'Legal notice', dsg: 'Privacy policy',
     legal: 'Legal notice and privacy policy', lnote: 'This is an English translation. If anything is unclear, the German version applies.',
