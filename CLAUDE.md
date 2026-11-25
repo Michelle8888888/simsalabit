@@ -13,7 +13,8 @@ Michelle (Michaela Olsova, writes in English) builds the site of her own web des
 | `src/page.html` | **The source of the whole page** (HTML, CSS, JS, German and English texts). Edit this. |
 | `src/build.py` | `python3 src/build.py` → writes `index.html` (fills in picture paths, inlines `src/bee-still.webp`). Reproducible. |
 | `index.html` | The built page. **Never hand-edit**, always rebuild. |
-| `assets/` | Photo and flower pictures (`.webp`), `tpl/` (template flowers), `bee.glb` (compressed 3D bee, ~1 MB), `vendor/three/` (three.js 0.160, self-hosted, no CDN). |
+| `assets/` | Photo and flower pictures (`.webp`), `tpl/` (template flowers), `bee.glb` (compressed 3D bee, ~1 MB), `vendor/three/` (three.js 0.160, self-hosted, no CDN), `fonts/` (Poppins, Instrument Serif, JetBrains Mono as woff2, self-hosted, OFL licences), `og.jpg` (link preview picture). |
+| `src/og.html` | Source of `assets/og.jpg` (1200 x 630): open it through the local server and take a 1200 x 630 screenshot (Playwright), save as JPEG. |
 | `_redirects` | Hides `src/`, `CLAUDE.md`, `README.md` on Netlify. |
 
 ## Workflow
@@ -37,6 +38,13 @@ Michelle (Michaela Olsova, writes in English) builds the site of her own web des
   then one line with © 2026 Simsalabit, Impressum, Datenschutz.
 - Ask before bigger design changes. Higgsfield (AI pictures and videos) costs credits: always ask first.
 
+## Contact form
+- The footer button "Schreiben Sie mir" and the "Spark/Spell/Grand illusion wählen" buttons open the form overlay `#anfrage` (the package buttons preselect their package).
+- Fields: Name and E-Mail (required), Telefon, Adresse, Paket, Geschäft, Webseiten-Idee, plus hidden `sprache` (de/en). Honeypot `bot-field`.
+- It posts to **Netlify Forms** (form name `anfrage`, free on credit plans). Netlify sends each request to magic@simsalabit.ch.
+- When the site moves to Infomaniak, Netlify Forms stops working: add a PHP handler there (like the Bedacht site) and point the form at it.
+- No external requests at all: fonts, three.js and pictures are all on the site. Keep it that way (the Datenschutz text says so).
+
 ## The bee (handle with care)
 - A 3D bee (three.js, GLTFLoader + meshopt) flies from stop to stop as the visitor scrolls. The route is the `STOPS` list in `src/page.html`.
   `findBloom` finds each flower's yellow centre. A still picture (`.bee-ph`) shows immediately and fades out when the 3D bee is ready (`bee-on`).
@@ -47,7 +55,4 @@ Michelle (Michaela Olsova, writes in English) builds the site of her own web des
 - Parallax uses `data-speed`. The footer flower is measured from its resting place at the page bottom, so it never touches the button.
 
 ## Before launch (open points)
-- Contact form (like the Bedacht site: PHP form handler on Infomaniak), today the button opens an e-mail.
-- Move to Infomaniak under simsalabit.ch.
-- Self-host the Google fonts (Poppins, Instrument Serif, JetBrains Mono), then delete the Google Fonts point in the Datenschutz text.
-- Social preview picture (`og:image`, `og:title`) so shared links show a nice card.
+- Move to Infomaniak under simsalabit.ch: then add the PHP form handler, and change `og:url` and `og:image` in `src/page.html` to https://simsalabit.ch/.

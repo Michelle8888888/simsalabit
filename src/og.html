@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Simsalabit link preview (1200 x 630)</title>
+<style>
+@font-face { font-family: "Poppins"; font-weight: 500; src: url(../assets/fonts/poppins-latin-500-normal.woff2) format("woff2"); }
+@font-face { font-family: "Poppins"; font-weight: 600; src: url(../assets/fonts/poppins-latin-600-normal.woff2) format("woff2"); }
+@font-face { font-family: "Instrument Serif"; font-style: italic; font-weight: 400; src: url(../assets/fonts/instrument-serif-latin-400-italic.woff2) format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-weight: 500; src: url(../assets/fonts/jetbrains-mono-latin-500-normal.woff2) format("woff2"); }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1200px; height: 630px; overflow: hidden; }
+body { position: relative; background: #e4e0fa url(../assets/tpl/301c35dd.webp) center/cover no-repeat; font-family: "Poppins", sans-serif; -webkit-font-smoothing: antialiased; }
+body::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(243,240,255,.92) 0%, rgba(243,240,255,.72) 42%, rgba(243,240,255,0) 68%); }
+.fl { position: absolute; width: 740px; height: 740px; right: -205px; top: -48px; transform: rotate(10deg); filter: drop-shadow(0 34px 44px rgba(80,50,160,.22)); }
+.fl img { width: 100%; height: 100%; display: block; }
+.fl i { position: absolute; left: 52.9%; top: 50.5%; width: 1px; height: 1px; }
+.bee { position: absolute; width: 228px; filter: drop-shadow(0 16px 18px rgba(40,20,90,.28)); }
+.txt { position: absolute; left: 80px; top: 50%; transform: translateY(-52%); }
+.wm { font-family: "Instrument Serif", Georgia, serif; font-style: italic; font-weight: 400; font-size: 128px; line-height: 1; letter-spacing: -.01em; white-space: nowrap; color: #0d0b1a; }
+.wm b { font-family: "JetBrains Mono", monospace; font-style: normal; font-weight: 500; font-size: .8em; color: #5b3df5; letter-spacing: -.02em; }
+.wm i { position: relative; font-style: normal; }
+.wm i svg { position: absolute; left: 50%; top: -.06em; width: .5em; height: .5em; transform: translateX(-50%); fill: currentColor; }
+.tag { margin-top: 24px; font-size: 34px; font-weight: 600; line-height: 1.15; letter-spacing: -.015em; color: #3a1fa6; }
+.place { margin-top: 14px; font-size: 23px; font-weight: 500; color: #4a4568; }
+</style>
+</head>
+<body>
+  <div class="fl"><img src="../assets/tpl/c994332b.webp" alt=""><i></i></div>
+  <img class="bee" src="../assets/bee-still.webp" alt="">
+  <div class="txt">
+    <div class="wm">Simsala<b>b<i>ı<svg viewBox="0 0 40 40"><path d="M20 0c1.2 11.5 8.5 18.8 20 20-11.5 1.2-18.8 8.5-20 20-1.2-11.5-8.5-18.8-20-20C11.5 18.8 18.8 11.5 20 0z"/></svg></i>t</b></div>
+    <p class="tag">Webseiten mit einem Hauch Magie</p>
+    <p class="place">Zürich, Schweiz</p>
+  </div>
+<script>
+// the bee sits with its feet in the yellow centre of the flower
+const c = document.querySelector('.fl i').getBoundingClientRect(), bee = document.querySelector('.bee');
+const put = () => { bee.style.left = (c.left - bee.offsetWidth * .45) + 'px'; bee.style.top = (c.top - bee.offsetHeight * .8) + 'px'; document.body.dataset.ready = 1; };
+bee.complete ? put() : bee.onload = put;
+</script>
+</body>
+</html>
