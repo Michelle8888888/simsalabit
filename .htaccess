@@ -1,0 +1,67 @@
+# Simsalabit on Infomaniak (Apache). The whole site lives in this folder.
+Options -Indexes
+DirectoryIndex index.html
+AddDefaultCharset utf-8
+
+# Every visitor lands on https://simsalabit.ch/ (the address in the link preview and the sitemap):
+# plain http goes to https, and www.simsalabit.ch goes to simsalabit.ch.
+# Written after Infomaniak's guide (FAQ 1961 and 482): their proxy announces https in X-Forwarded-Proto.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} off
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L,NE]
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^(.*)$ https://%1/$1 [R=301,L,NE]
+</IfModule>
+
+# the page source, the notes for the editor and the form settings are not public
+RedirectMatch 404 ^/src(/|$)
+RedirectMatch 404 ^/(CLAUDE\.md|README\.md|\.gitignore|anfrage-config.*\.php)$
+<FilesMatch "^(anfrage-config.*\.php|CLAUDE\.md|README\.md|\.gitignore)$">
+  Require all denied
+</FilesMatch>
+
+# file types the site uses
+<IfModule mod_mime.c>
+  AddType model/gltf-binary .glb
+  AddType image/webp .webp
+  AddType font/woff2 .woff2
+  AddType image/svg+xml .svg
+  AddType application/manifest+json .webmanifest
+  AddType text/javascript .js
+</IfModule>
+
+# pictures, fonts, the 3D bee and three.js are kept by the browser for 30 days; the page itself is always fetched fresh.
+# (so when a picture changes, give the new file a new name)
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 hour"
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType image/webp "access plus 30 days"
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/svg+xml "access plus 30 days"
+  ExpiresByType image/x-icon "access plus 30 days"
+  ExpiresByType image/vnd.microsoft.icon "access plus 30 days"
+  ExpiresByType font/woff2 "access plus 30 days"
+  ExpiresByType model/gltf-binary "access plus 30 days"
+  ExpiresByType text/javascript "access plus 30 days"
+  ExpiresByType application/javascript "access plus 30 days"
+</IfModule>
+<IfModule mod_headers.c>
+  <FilesMatch "\.(webp|jpg|png|ico|svg|woff2|glb|js)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+  <FilesMatch "\.(html|php|webmanifest|xml|txt)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# text files travel compressed (the 3D bee and the pictures are already compressed)
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/javascript application/javascript application/json application/manifest+json image/svg+xml text/xml application/xml
+</IfModule>

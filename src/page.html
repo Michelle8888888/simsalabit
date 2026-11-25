@@ -5,20 +5,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Simsalabit | Webseiten mit einem Hauch Magie</title>
 <meta name="description" content="Webseiten mit einem Hauch Magie für kleine Unternehmen. Gestaltet, getextet und online in ein bis vier Wochen.">
-<!-- link preview (WhatsApp, iMessage, LinkedIn, Facebook ...): change the address when the site moves to simsalabit.ch -->
+<link rel="canonical" href="https://simsalabit.ch/">
+<!-- link preview (WhatsApp, iMessage, LinkedIn, Facebook ...): the picture is assets/og.jpg, made from src/og.html -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Simsalabit">
 <meta property="og:locale" content="de_CH">
 <meta property="og:title" content="Simsalabit | Webseiten mit einem Hauch Magie">
 <meta property="og:description" content="Webseiten mit einem Hauch Magie für kleine Unternehmen. Gestaltet, getextet und online in ein bis vier Wochen.">
-<meta property="og:url" content="https://simsalabit.netlify.app/">
-<meta property="og:image" content="https://simsalabit.netlify.app/assets/og.jpg">
+<meta property="og:url" content="https://simsalabit.ch/">
+<meta property="og:image" content="https://simsalabit.ch/assets/og.jpg">
+<meta property="og:image:secure_url" content="https://simsalabit.ch/assets/og.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Simsalabit, Webseiten mit einem Hauch Magie, Zürich">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2315141A'/%3E%3Cpath transform='translate(12 12)' fill='%239D8BF9' d='M20 0c1.2 11.5 8.5 18.8 20 20-11.5 1.2-18.8 8.5-20 20-1.2-11.5-8.5-18.8-20-20C11.5 18.8 18.8 11.5 20 0z'/%3E%3C/svg%3E">
+<meta name="twitter:title" content="Simsalabit | Webseiten mit einem Hauch Magie">
+<meta name="twitter:description" content="Webseiten mit einem Hauch Magie für kleine Unternehmen. Gestaltet, getextet und online in ein bis vier Wochen.">
+<meta name="twitter:image" content="https://simsalabit.ch/assets/og.jpg">
+<!-- icons (made by python3 src/icons.py): favicon.ico for older browsers and Google, the SVG for modern browsers,
+     the PNGs for the iPhone home screen and Android. They are files, not data: URLs, so Safari and iMessage show them too. -->
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#e7e3fb">
 <link rel="preload" href="assets/bee.glb" as="fetch" crossorigin="anonymous">
 <!-- the import map must come before any module preload, or Chrome ignores it and the bee never starts -->
 <script type="importmap">
@@ -118,7 +129,6 @@ main { overflow-x: clip; }
 .bee-ph { position: absolute; left: calc(50% - 14.83vh); top: calc(47vh - 8.06vh); width: 27.56vh; height: auto; pointer-events: none; z-index: 5; animation: beeph 1.8s ease-in-out infinite; transition: opacity .5s ease; }
 body.bee-on .bee-ph { opacity: 0; animation: none; }
 @keyframes beeph { 50% { transform: translateY(-1.2vh); } }
-@media (prefers-reduced-motion: reduce) { .bee-ph { animation: none; } }
 .loaded .hero__side { animation: fade 1s .7s ease forwards; }
 .hero__side p { font-size: clamp(15px,1.45vw,20px); line-height: 1.32; color: var(--muted); font-weight: 400; }
 .hero__side .motto span { display: block; }
@@ -414,12 +424,8 @@ body.kf-open { overflow: hidden; }
   .flegal { gap: 18px; }
   .fbottom { display: block; margin-top: calc(34px + 40vw); }
 }
-@media (prefers-reduced-motion: reduce) {
-  .reveal { opacity: 1; transform: none; transition: none; }
-  .hero h1 .line span { transform: none; animation: none !important; }
-  .hero__side { opacity: 1; animation: none !important; }
-  .bfb::before { animation: none; }
-}
+/* The animations and the bee play for every visitor, also when "Reduce motion" is switched on in the phone settings
+   (decided with Michelle, November 2026): this file deliberately has no media rule for reduced motion. */
 </style>
 </head>
 <body>
@@ -653,11 +659,12 @@ body.kf-open { overflow: hidden; }
       <h3>2. Worum es geht</h3>
       <p>Diese Datenschutzerklärung erklärt, welche Personendaten ich beim Besuch dieser Webseite und bei Ihrer Kontaktaufnahme bearbeite, wozu ich sie bearbeite und an wen sie gehen. Sie richtet sich nach dem Schweizer Bundesgesetz über den Datenschutz (DSG). Soweit für Besucherinnen und Besucher aus der EU die Datenschutz-Grundverordnung (DSGVO) gilt, gelten diese Angaben sinngemäss auch dafür.</p>
       <h3>3. Besuch dieser Webseite</h3>
-      <p>Beim Aufruf der Webseite bearbeitet mein Hosting-Anbieter automatisch technische Daten: Ihre IP-Adresse, Datum und Uhrzeit des Zugriffs, die aufgerufene Seite, die zuvor besuchte Seite sowie Browser und Betriebssystem. Diese Daten sind nötig, um die Webseite auszuliefern, sie sicher zu betreiben und Störungen zu beheben. Ich führe sie nicht mit anderen Daten zusammen. Hosting-Anbieter: Infomaniak Network SA, Schweiz.</p>
+      <p>Beim Aufruf der Webseite bearbeitet mein Hosting-Anbieter automatisch technische Daten: Ihre IP-Adresse, Datum und Uhrzeit des Zugriffs, die aufgerufene Seite, die zuvor besuchte Seite sowie Browser und Betriebssystem. Diese Daten sind nötig, um die Webseite auszuliefern, sie sicher zu betreiben und Störungen zu beheben. Ich führe sie nicht mit anderen Daten zusammen.</p>
+      <p>Hosting-Anbieterin ist die Infomaniak Network SA, Genf. Sie bearbeitet diese Daten in meinem Auftrag, ausschliesslich in Rechenzentren in der Schweiz und nach ihren Datenschutzbestimmungen: <a href="https://www.infomaniak.com/de/agb/datenschutzrichtlinien" target="_blank" rel="noopener">Datenschutzrichtlinien von Infomaniak</a>. Andere Anbieter sind am Betrieb dieser Webseite nicht beteiligt.</p>
       <h3>4. Schriften und Inhalte</h3>
       <p>Alle Schriften, Bilder und Programmteile dieser Webseite liegen bei meinem Hosting-Anbieter. Ihr Browser lädt keine Inhalte von anderen Anbietern wie Google. Ihre IP-Adresse wird deshalb nicht an solche Anbieter übermittelt.</p>
       <h3>5. Kontaktformular und Kontaktaufnahme</h3>
-      <p>Wenn Sie das Kontaktformular ausfüllen, bearbeite ich die Angaben, die Sie eintragen: Name, E-Mail-Adresse, Telefonnummer, Adresse, das gewünschte Paket sowie Ihre Beschreibung Ihres Geschäfts und Ihrer Webseite. Nur Name und E-Mail-Adresse sind Pflichtangaben. Die Formulareinträge werden mir per E-Mail an mein Postfach bei Infomaniak (Schweiz) zugestellt. Nur ich lese und bearbeite sie. Ich verwende sie nur, um Ihre Anfrage zu beantworten und Ihnen gegebenenfalls ein Angebot zu machen.</p>
+      <p>Wenn Sie das Kontaktformular ausfüllen, bearbeite ich die Angaben, die Sie eintragen: Name, E-Mail-Adresse, Telefonnummer, Adresse, das gewünschte Paket sowie Ihre Beschreibung Ihres Geschäfts und Ihrer Webseite. Nur Name und E-Mail-Adresse sind Pflichtangaben. Die Formulareinträge werden vom Webserver direkt per E-Mail an mein Postfach bei Infomaniak (Schweiz) zugestellt und nicht auf dem Webserver gespeichert. Nur ich lese und bearbeite sie. Ich verwende sie nur, um Ihre Anfrage zu beantworten und Ihnen gegebenenfalls ein Angebot zu machen.</p>
       <p>Wenn Sie mir eine E-Mail schreiben oder mich anrufen, bearbeite ich Ihre Angaben, zum Beispiel Name, E-Mail-Adresse, Telefonnummer und den Inhalt Ihrer Nachricht, um Ihre Anfrage zu beantworten und gegebenenfalls ein Angebot oder einen Auftrag abzuwickeln. Ich gebe diese Daten nicht an Dritte weiter, ausser an Dienstleister, die ich dafür brauche (zum Beispiel meinen E-Mail-Anbieter), oder wenn ich gesetzlich dazu verpflichtet bin.</p>
       <h3>6. Cookies und Tracking</h3>
       <p>Diese Webseite setzt keine Cookies und verwendet keine Analyse- oder Werbedienste. Ihre Sprachwahl (Deutsch oder Englisch) wird nur lokal in Ihrem Browser gespeichert und nicht an mich übermittelt.</p>
@@ -695,11 +702,12 @@ body.kf-open { overflow: hidden; }
       <h3>2. What this is about</h3>
       <p>This privacy policy explains which personal data I process when you visit this website and when you contact me, why I process it and who receives it. It follows the Swiss Federal Act on Data Protection (FADP). Where the EU General Data Protection Regulation (GDPR) applies to visitors from the EU, this information applies accordingly.</p>
       <h3>3. Visiting this website</h3>
-      <p>When you open the website, my hosting provider automatically processes technical data: your IP address, the date and time of access, the page you open, the page you came from, and your browser and operating system. This data is needed to deliver the website, to run it securely and to fix faults. I do not combine it with other data. Hosting provider: Infomaniak Network SA, Switzerland.</p>
+      <p>When you open the website, my hosting provider automatically processes technical data: your IP address, the date and time of access, the page you open, the page you came from, and your browser and operating system. This data is needed to deliver the website, to run it securely and to fix faults. I do not combine it with other data.</p>
+      <p>The hosting provider is Infomaniak Network SA, Geneva. It processes this data on my behalf, exclusively in data centres in Switzerland and under its data protection policy: <a href="https://www.infomaniak.com/en/legal/confidentiality-policy" target="_blank" rel="noopener">Infomaniak privacy policy</a>. No other providers are involved in running this website.</p>
       <h3>4. Fonts and content</h3>
       <p>All fonts, images and program files of this website are stored with my hosting provider. Your browser does not load any content from other providers such as Google, so your IP address is not passed on to such providers.</p>
       <h3>5. Contact form and getting in touch</h3>
-      <p>When you fill in the contact form, I process the details you enter: name, email address, phone number, address, the package you are interested in, and your description of your business and your website. Only your name and email address are required. The form entries are sent to me by email, to my mailbox at Infomaniak (Switzerland). Only I read and process them. I use them only to answer your request and, where relevant, to make you an offer.</p>
+      <p>When you fill in the contact form, I process the details you enter: name, email address, phone number, address, the package you are interested in, and your description of your business and your website. Only your name and email address are required. The form entries are sent by the web server directly by email to my mailbox at Infomaniak (Switzerland) and are not stored on the web server. Only I read and process them. I use them only to answer your request and, where relevant, to make you an offer.</p>
       <p>When you email or call me, I process your details, for example your name, email address, phone number and the content of your message, to answer your request and, where relevant, to handle an offer or an order. I do not pass this data on to third parties, except to service providers I need for this purpose (for example my email provider) or where I am required to do so by law.</p>
       <h3>6. Cookies and tracking</h3>
       <p>This website does not set any cookies and does not use any analytics or advertising services. Your language choice (German or English) is only stored locally in your browser and is not sent to me.</p>
@@ -724,9 +732,9 @@ body.kf-open { overflow: hidden; }
       <p class="kf__over" data-k="kfo">Schreiben Sie mir</p>
       <h2 id="kf-title" data-k="kft">Erzählen Sie mir von Ihrem Projekt</h2>
       <p class="kf__lead" data-k="kfl">Ein paar Angaben genügen. Ich melde mich persönlich bei Ihnen.</p>
-      <form class="kf__form" name="anfrage" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
-        <input type="hidden" name="form-name" value="anfrage">
+      <form class="kf__form" name="anfrage" method="POST" action="anfrage.php" novalidate>
         <input type="hidden" name="sprache" value="de">
+        <input type="hidden" name="zeit" value="">
         <p class="kf__hp"><label>Bitte leer lassen <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
         <div class="kf__row">
           <label class="kf__f"><span><b>Name</b> <i>*</i></span><input name="name" autocomplete="name" required></label>
@@ -918,7 +926,7 @@ body.kf-open { overflow: hidden; }
   addEventListener('hashchange', route);
   route();
 
-  // ---------- Contact form (Netlify Forms; the footer button and the package buttons open it) ----------
+  // ---------- Contact form (anfrage.php on the server emails it to Michelle; the footer button and the package buttons open it) ----------
   const kf = document.getElementById('anfrage');
   const kform = kf.querySelector('form'), kask = kf.querySelector('.kf__ask'), kdone = kf.querySelector('.kf__done');
   const kerr = kf.querySelector('.kf__err'), ksend = kf.querySelector('.kf__send'), kcard = kf.querySelector('.kf__card');
@@ -927,6 +935,8 @@ body.kf-open { overflow: hidden; }
     kBack = from || null;
     kask.hidden = false; kdone.hidden = true; kerr.hidden = true;
     if (pkg) { const r = kform.querySelector(`input[name="paket"][value="${pkg}"]`); if (r) r.checked = true; }
+    // when the form was opened: anfrage.php ignores forms that are sent within a few seconds (bots)
+    if (!kform.elements.zeit.value) kform.elements.zeit.value = String(Math.floor(Date.now() / 1000));
     kf.hidden = false; document.body.classList.add('kf-open'); kf.scrollTop = 0;
     if (matchMedia('(pointer: fine)').matches) kform.elements.name.focus({ preventScroll: true }); else kcard.focus({ preventScroll: true });
   };
@@ -952,11 +962,12 @@ body.kf-open { overflow: hidden; }
     kform.elements.sprache.value = en ? 'en' : 'de';
     kerr.hidden = true; ksend.disabled = true;
     try {
-      const r = await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(kform)).toString() });
-      if (!r.ok) throw new Error(r.status);
+      const r = await fetch('anfrage.php', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Accept': 'application/json' }, body: new URLSearchParams(new FormData(kform)).toString() });
+      const j = await r.json().catch(() => null);
+      if (!r.ok || !j || !j.ok) throw new Error((j && j.error) || String(r.status));
       const first = kform.elements.name.value.trim().split(/\s+/)[0];
       kdone.querySelector('.kf__thanks').textContent = (en ? 'Thank you, ' : 'Danke, ') + first + '!';
-      kform.reset(); kask.hidden = true; kdone.hidden = false; kf.scrollTop = 0;
+      kform.reset(); kform.elements.zeit.value = ''; kask.hidden = true; kdone.hidden = false; kf.scrollTop = 0;
     } catch (err) {
       kerr.innerHTML = en ? 'Sorry, that did not work. Please write to me directly at <a href="mailto:magic@simsalabit.ch">magic@simsalabit.ch</a>.' : 'Das hat leider nicht geklappt. Schreiben Sie mir bitte direkt an <a href="mailto:magic@simsalabit.ch">magic@simsalabit.ch</a>.';
       kerr.hidden = false;
