@@ -4,7 +4,8 @@ Michelle (Michaela Olsova, writes in English) builds the site of her own web des
 ("Webseiten mit einem Hauch Magie", Zürich). The site is **German by default with an EN switch**. Swiss spelling: "ss", never "ß".
 
 - Live site (branch `main`): https://simsalabit.netlify.app
-- Free preview (PR `vorschau` → `main`, currently PR #2): https://deploy-preview-2--simsalabit.netlify.app (needs the Netlify login)
+- Free preview: the open PR `vorschau` → `main` (PR #3 since 25 Nov 2026) → https://deploy-preview-3--simsalabit.netlify.app (needs the Netlify login).
+  When a PR is merged by a production deploy, the next one gets a new number: update this line and `PUBLISHING.md`.
 - Later: own domain simsalabit.ch on Infomaniak (not done yet).
 
 ## Repository layout
@@ -15,14 +16,29 @@ Michelle (Michaela Olsova, writes in English) builds the site of her own web des
 | `index.html` | The built page. **Never hand-edit**, always rebuild. |
 | `assets/` | Photo and flower pictures (`.webp`), `tpl/` (template flowers), `bee.glb` (compressed 3D bee, ~1 MB), `vendor/three/` (three.js 0.160, self-hosted, no CDN), `fonts/` (Poppins, Instrument Serif, JetBrains Mono as woff2, self-hosted, OFL licences), `og.jpg` (link preview picture). |
 | `src/og.html` | Source of `assets/og.jpg` (1200 x 630): open it through the local server and take a 1200 x 630 screenshot (Playwright), save as JPEG. |
-| `_redirects` | Hides `src/`, `CLAUDE.md`, `README.md` on Netlify. |
+| `tools/check.py` | `python3 tools/check.py`: checks phone/small phone/laptop in DE and EN (no script errors, no outside requests, fonts, footer button vs flower, contact form, Impressum/Datenschutz in both languages) and saves screenshots to `tools/out/`. Needs Playwright (`pip install playwright && playwright install chromium`) or `CHROME=/path/to/chrome`. |
+| `tools/og.py` | Rebuilds `assets/og.jpg` from `src/og.html`. `tools/serve.py` serves the site locally (`python3 tools/serve.py` → http://localhost:8800/). |
+| `PUBLISHING.md` | Log of every production deploy (15 credits each). |
+| `_redirects` | Hides `src/`, `tools/`, `CLAUDE.md`, `README.md` on Netlify. |
 
 ## Workflow
-1. Edit `src/page.html` → `python3 src/build.py` → check locally: `python3 -m http.server 8800` → http://localhost:8800/
-   Check phones (360 to 430 px wide) and computers (1280 to 1920 px), in German and English, and scroll the whole page to watch the bee.
+1. Edit `src/page.html` → `python3 src/build.py` → `python3 tools/check.py` → look at the screenshots in `tools/out/`.
+   For the bee, open http://localhost:8800/ (`python3 tools/serve.py`) in a real browser and scroll the whole page, on a phone size and a computer size.
 2. Commit to **`vorschau`** and push → the free Deploy Preview updates (no credits).
 3. **Only when Michelle says a version is ready:** fast-forward `main` to `vorschau` and push = production deploy (costs 15 Netlify credits).
-   Then open a new PR `vorschau` → `main`. Never push work in progress to `main`. GitHub: use `gh api` (REST).
+   Then open a new PR `vorschau` → `main` (it needs at least one new commit on `vorschau`) and log the deploy in `PUBLISHING.md`.
+   Never push work in progress to `main`. GitHub: use `gh api` (REST).
+
+## Copy concept (decided 25 Nov 2026, keep it)
+- **Magic is the brand voice** (Simsalabit, "Webseiten mit einem Hauch Magie", Spark/Spell/Grand illusion, "KI ist mein Zauberstab", footer title).
+  **Blooming is the client's result. The busy bee is the client.** Bee/bloom wording appears only in these places, don't add more and no "Nektar":
+  - Hero title: "Webseiten, die Ihr Geschäft zum Blühen bringen" / "Websites that make your business flourish"
+  - Hero subtitle: "Sie sind die fleissige Biene, ich übernehme die Online-Magie" / "You are the busy bee, I take care of the online magic"
+  - 01: "Alles, was Ihr Geschäft zum Blühen bringt"; value Freiheit starts "Sie sind die fleissige Biene in Ihrem Geschäft."
+  - Form thank-you: "Ihre Anfrage ist zu mir geflogen."
+- Other titles: 02 "Ihre Webseite, ganz ohne Stress"; footer "Bereit für eine magische Webseite?" / "Ready for a magical website?"
+- The site is for all small businesses, not only beauty studios (Spell: "für die meisten Geschäfte").
+- "Online-Magie", "E-Mail", "Online-Buchung" keep their hyphen (German spelling); only sentence dashes are banned.
 
 ## Rules (decided with Michelle, keep them)
 - German texts say **"Webseite(n)"**, not "Website(s)". Hero line: "Ich gestalte Webseiten, die in Erinnerung bleiben" /
