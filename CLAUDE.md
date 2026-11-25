@@ -77,6 +77,12 @@ Michelle (Michaela Olsova, writes in English) builds the site of her own web des
 - The import map must stay **before** the `modulepreload` links (otherwise Chrome ignores it and the bee disappears).
 - Parallax uses `data-speed`. The footer flower is measured from its resting place at the page bottom, so it never touches the button.
 
+## Review slider (04)
+- The reviews scroll sideways natively (`overflow-x: auto`, `scroll-snap-type: x mandatory`, one review per swipe); the script only follows
+  the scroll position and moves the box for the dots, the arrow keys, a mouse drag and a short touch swipe. **Never move the cards with a
+  transform again:** browsers that translate the page for the visitor (Chrome, Safari) only translate text that scrolls into view, and
+  cards shifted by a transform inside a clipped box stayed untranslated (Michelle's mother in Slovakia saw German reviews on a translated page).
+
 ## Launch on Infomaniak (what Michelle still does herself)
 - Book Infomaniak **Web Hosting** (PHP) for simsalabit.ch; the free Starter hosting cannot run `anfrage.php`.
 - Upload the contents of `simsalabit-upload.zip` into the site's root folder, enter the mailbox password in `anfrage-config.php` there.
