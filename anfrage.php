@@ -59,6 +59,10 @@ function field(string $key, int $max, bool $multiline = false): string {
 
 // bots fill the hidden field that people never see: pretend it worked and send nothing
 if (field('bot-field', 50) !== '') answer(true);
+// the page's script writes the opening time and a key made from it into the form. A program that posts straight to this file,
+// without ever opening the page, has neither (this is how SEO spam arrived): pretend it worked and send nothing
+$zeit = (int) field('zeit', 20);
+if ($zeit <= 0 || field('schluessel', 20) !== (string) (($zeit % 100000) * 37 % 9973)) answer(true);
 
 $name  = field('name', 120);
 $email = field('email', 200);
@@ -72,9 +76,13 @@ if (!in_array($paket, ['Spark', 'Spell', 'Grand illusion', 'Weiss ich noch nicht
 $geschaeft = field('geschaeft', 3000, true);
 $webseite  = field('webseite', 3000, true);
 $sprache   = field('sprache', 2) === 'en' ? 'Englisch' : 'Deutsch';
-// a form sent within three seconds of being opened was most likely not filled in by a person: it is still delivered, but marked
-$zeit = (int) field('zeit', 20);
-$verdacht = $zeit <= 0 || time() - $zeit < 3;
+// still delivered, but marked "[Bitte prüfen]": a form sent within three seconds of being opened, text with several links,
+// typical SEO spam wording, or a sender address that carries the site's own name (a favourite of spam programs)
+$text = $geschaeft . "\n" . $webseite;
+$links = preg_match_all('~https?://|www\.|\b[a-z0-9-]+\.(?:com|net|org|pro|live|xyz|info|top|site|online|shop|biz|ru|cn)\b~i', $text);
+$spamWorte = (bool) preg_match('~search index|search results|search engine|backlinks?|rank(?:ing)? your|list your|feature your|register your|crypto|bitcoin|casino|viagra~i', $text);
+$selbstBezug = stripos($email, 'simsalabit') !== false;
+$verdacht = time() - $zeit < 3 || $links >= 2 || $spamWorte || $selbstBezug;
 
 $subject = ($verdacht ? '[Bitte prüfen] ' : '') . 'Anfrage über simsalabit.ch von ' . $name . ($paket !== '' ? ' (' . $paket . ')' : '');
 $body = "Neue Anfrage über simsalabit.ch\n\n"
@@ -87,7 +95,7 @@ $body = "Neue Anfrage über simsalabit.ch\n\n"
       . "Geschäft:\n" . ($geschaeft !== '' ? $geschaeft : '-') . "\n\n"
       . "Webseiten-Idee:\n" . ($webseite !== '' ? $webseite : '-') . "\n\n"
       . "Gesendet am " . date('d.m.Y') . " um " . date('H:i') . " Uhr"
-      . ($verdacht ? "\nHinweis: Das Formular wurde ungewöhnlich schnell abgeschickt, möglicherweise von einem Programm." : '') . "\n";
+      . ($verdacht ? "\nHinweis: Diese Anfrage sieht nach Spam aus (" . implode(', ', array_filter([time() - $zeit < 3 ? 'sehr schnell abgeschickt' : '', $links >= 2 ? 'mehrere Links' : '', $spamWorte ? 'typische Spam-Wörter' : '', $selbstBezug ? 'Absenderadresse mit simsalabit' : ''])) . ")." : '') . "\n";
 
 $from = (string) $cfg['from'];
 $to = (string) $cfg['to'];

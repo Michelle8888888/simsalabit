@@ -738,6 +738,7 @@ body.kf-open { overflow: hidden; }
       <form class="kf__form" name="anfrage" method="POST" action="anfrage.php" novalidate>
         <input type="hidden" name="sprache" value="de">
         <input type="hidden" name="zeit" value="">
+        <input type="hidden" name="schluessel" value="">
         <p class="kf__hp"><label>Bitte leer lassen <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
         <div class="kf__row">
           <label class="kf__f"><span><b>Name</b> <i>*</i></span><input name="name" autocomplete="name" required></label>
@@ -951,8 +952,9 @@ body.kf-open { overflow: hidden; }
     kBack = from || null;
     kask.hidden = false; kdone.hidden = true; kerr.hidden = true;
     if (pkg) { const r = kform.querySelector(`input[name="paket"][value="${pkg}"]`); if (r) r.checked = true; }
-    // when the form was opened: anfrage.php ignores forms that are sent within a few seconds (bots)
-    if (!kform.elements.zeit.value) kform.elements.zeit.value = String(Math.floor(Date.now() / 1000));
+    // when the form was opened, and a key made from it: anfrage.php drops posts without the key (programs that post straight
+    // to the file, never through this page) and marks forms sent within a few seconds of opening
+    if (!kform.elements.zeit.value) { const z = Math.floor(Date.now() / 1000); kform.elements.zeit.value = String(z); kform.elements.schluessel.value = String((z % 100000) * 37 % 9973); }
     kf.hidden = false; document.body.classList.add('kf-open'); kf.scrollTop = 0;
     if (matchMedia('(pointer: fine)').matches) kform.elements.name.focus({ preventScroll: true }); else kcard.focus({ preventScroll: true });
   };
@@ -983,7 +985,7 @@ body.kf-open { overflow: hidden; }
       if (!r.ok || !j || !j.ok) throw new Error((j && j.error) || String(r.status));
       const first = kform.elements.name.value.trim().split(/\s+/)[0];
       kdone.querySelector('.kf__thanks').textContent = (en ? 'Thank you, ' : 'Danke, ') + first + '!';
-      kform.reset(); kform.elements.zeit.value = ''; kask.hidden = true; kdone.hidden = false; kf.scrollTop = 0;
+      kform.reset(); kform.elements.zeit.value = ''; kform.elements.schluessel.value = ''; kask.hidden = true; kdone.hidden = false; kf.scrollTop = 0;
     } catch (err) {
       kerr.innerHTML = en ? 'Sorry, that did not work. Please write to me directly at <a href="mailto:magic@simsalabit.ch">magic@simsalabit.ch</a>.' : 'Das hat leider nicht geklappt. Schreiben Sie mir bitte direkt an <a href="mailto:magic@simsalabit.ch">magic@simsalabit.ch</a>.';
       kerr.hidden = false;

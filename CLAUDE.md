@@ -49,12 +49,14 @@ Michelle (Michaela Olsova, writes in English) builds the site of her own web des
 
 ## Contact form
 - The footer button "Schreiben Sie mir" and the "Spark/Spell/Grand illusion wählen" buttons open the form overlay `#anfrage` (the package buttons preselect their package).
-- Fields: Name and E-Mail (required), Telefon, Adresse, Paket, Geschäft, Webseiten-Idee, plus hidden `sprache` (de/en) and `zeit`
-  (when the form was opened). Honeypot `bot-field`.
+- Fields: Name and E-Mail (required), Telefon, Adresse, Paket, Geschäft, Webseiten-Idee, plus hidden `sprache` (de/en), `zeit`
+  (when the form was opened) and `schluessel` (a key the page's script makes from `zeit`: `(zeit % 100000) * 37 % 9973`). Honeypot `bot-field`.
 - The page posts it with `fetch` to **`anfrage.php`** (same folder) and expects JSON `{ok: true}`; on failure it shows the mailto fallback.
-  `anfrage.php` cleans every field (valid UTF-8, no control characters, length limits), drops forms with a filled honeypot silently,
-  and emails the rest as plain text to magic@simsalabit.ch with the visitor as Reply-To. A form sent within 3 seconds of opening is
-  still delivered, with "[Bitte prüfen]" in the subject. Nothing is stored on the server.
+  `anfrage.php` cleans every field (valid UTF-8, no control characters, length limits), drops forms with a filled honeypot or without the
+  right `schluessel` silently (programs that post straight to the file; that is how SEO spam arrived in November 2026), and emails the rest
+  as plain text to magic@simsalabit.ch with the visitor as Reply-To. Delivered but marked "[Bitte prüfen]" in the subject (with the reasons
+  at the end of the mail): sent within 3 seconds of opening, two or more links in the texts, typical SEO spam wording, or a sender address
+  containing "simsalabit". No captcha and nothing from outside. Nothing is stored on the server.
 - Sending: with `smtp_pass` in `anfrage-config.php` it logs in at mail.infomaniak.com (port 465 TLS, or 587 STARTTLS) as that mailbox,
   the way Infomaniak recommends; without a password it falls back to PHP `mail()`, which Infomaniak keeps off unless switched on in the
   Manager for the site (with a sender address of the domain). Errors go to the PHP error log, visitors only see a generic message.
