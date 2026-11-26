@@ -19,6 +19,7 @@ Michelle (Michaela Olsova, writes in English) builds the site of her own web des
 | `.htaccess` | Infomaniak (Apache): https and no www, hides `src/`, the notes and the form settings, file types, 30-day caching of assets, compression. |
 | `favicon.ico`, `favicon.svg`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png`, `site.webmanifest` | The icons (sparkle on dark), made from `favicon.svg` by `python3 src/icons.py` (Playwright + Pillow). |
 | `robots.txt`, `sitemap.xml` | For search engines; the sitemap names https://simsalabit.ch/. |
+| `assets/signatur/` | `michaela.jpg` (300 px) and `logo.png` (600 px, transparent, rendered from the site's logo) for Michelle's email signature; `src/signatur.html` is the signature itself (open in a browser, copy, paste into Infomaniak Mail). |
 | `src/pack.py` | `python3 src/pack.py` → `simsalabit-upload.zip` with everything the public site needs (not in Git). |
 
 ## Workflow
